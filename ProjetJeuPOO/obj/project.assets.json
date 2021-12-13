@@ -8,20 +8,28 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\patri\\.nuget\\packages\\": {}
+    "C:\\Users\\14182\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\patri\\OneDrive\\_CSF_\\_Rebon numérique_\\_Formation_\\_Cours_\\2-ApplicationNative\\G-Projet\\Projet II\\FrameProjet\\ProjetJeuPOO\\ProjetJeuPOO\\ProjetJeuPOO.csproj",
+      "projectUniqueName": "C:\\Users\\14182\\Source\\Repos\\ProjetBingo\\ProjetJeuPOO\\ProjetJeuPOO.csproj",
       "projectName": "ProjetJeuPOO",
-      "projectPath": "C:\\Users\\patri\\OneDrive\\_CSF_\\_Rebon numérique_\\_Formation_\\_Cours_\\2-ApplicationNative\\G-Projet\\Projet II\\FrameProjet\\ProjetJeuPOO\\ProjetJeuPOO\\ProjetJeuPOO.csproj",
-      "packagesPath": "C:\\Users\\patri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\patri\\OneDrive\\_CSF_\\_Rebon numérique_\\_Formation_\\_Cours_\\2-ApplicationNative\\G-Projet\\Projet II\\FrameProjet\\ProjetJeuPOO\\ProjetJeuPOO\\obj\\",
+      "projectPath": "C:\\Users\\14182\\Source\\Repos\\ProjetBingo\\ProjetJeuPOO\\ProjetJeuPOO.csproj",
+      "packagesPath": "C:\\Users\\14182\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\14182\\Source\\Repos\\ProjetBingo\\ProjetJeuPOO\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\patri\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\14182\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -55,12 +63,18 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[3.1.21, 3.1.21]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
