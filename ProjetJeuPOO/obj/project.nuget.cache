@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "QBFCCCrpL+vqbp52cT8K50O/spBt7l1wT7ieKM8qtsJtOJEUnf7pIuzjqb3n8xmsWGF6eunCPQGt6b2IO2sU2g==",
+  "dgSpecHash": "prM8G39PyNIlLrFkleA6Sb/QxtBykf+jAmQp+m9HvRoDdVhejsxjQmrY7Qz8QfXSFSRbPQXoMy+OG986UHyarQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\patri\\OneDrive\\_CSF_\\_Rebon numérique_\\_Formation_\\_Cours_\\2-ApplicationNative\\G-Projet\\Projet II\\FrameProjet\\ProjetJeuPOO\\ProjetJeuPOO\\ProjetJeuPOO.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\14182\\Source\\Repos\\ProjetBingo\\ProjetJeuPOO\\ProjetJeuPOO.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\14182\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.21\\microsoft.netcore.app.host.win-x64.3.1.21.nupkg.sha512"
+  ],
   "logs": []
 }
