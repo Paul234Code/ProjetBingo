@@ -9,7 +9,7 @@ namespace ProjetJeuPOO
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Projet POO");            
+
         }
     }
 }

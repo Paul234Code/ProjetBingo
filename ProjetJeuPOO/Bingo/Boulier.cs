@@ -6,7 +6,34 @@ using System.Text;
 
 namespace ProjetJeuPOO.Bingo
 {
-    class Boulier
+    class Boulier : IBingoBoulier
     {
+
+
+
+        public void add(BingoBall element)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BingoBall getRanbomBall()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int getSize()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool isEmpty()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void restartBoulier()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

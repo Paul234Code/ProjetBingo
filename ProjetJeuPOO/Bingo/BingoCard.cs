@@ -9,5 +9,6 @@ namespace ProjetJeuPOO.Bingo
 {
     class BingoCard
     {
+
     }
 }
