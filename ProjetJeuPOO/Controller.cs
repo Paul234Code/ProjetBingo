@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using ProjetJeuPOO.Bingo;
 using ProjetJeuPOO.SimiliBlackJack;
 using ProjetJeuPOO.SimiliPendu;
@@ -12,15 +13,11 @@ namespace ProjetJeuPOO
         {
             ListeDeMots liste = new ListeDeMots()
             {
-                 ListeDeMot = new List<string>{"Orange","Mangue","Banana","Poire"}
+                 ListeDeMot = new List<string>{"Orange","Mangue", "developpement", "Recommandation", "Banana","Poire","Deroulement","Pomme","Limon","Cerise","Ordinateur"}
             };
-            
-            string str1 = liste.getRandomWord();
-            Console.WriteLine(str1);
-            Pendu pendu = new Pendu(liste);
-            string str =  pendu.TransformRandomWord();
-            Console.WriteLine(str); 
 
+            Pendu pendu = new Pendu(liste);
+            pendu.Jouer();
         }
     }
 }
