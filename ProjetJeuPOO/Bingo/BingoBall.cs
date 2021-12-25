@@ -15,7 +15,8 @@ namespace ProjetJeuPOO.Bingo
             get => number;
             set => number = value;
         }
-        public char Letter {
+        public char Letter 
+        {
             get => letter;
             set => letter = value;
         }
