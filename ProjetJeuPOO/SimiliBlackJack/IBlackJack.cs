@@ -8,6 +8,6 @@ namespace ProjetJeuPOO.SimiliBlackJack
     {
         public void Jouer();
         public void VoirScore();
-        public void DealCard();
+        public void DealCard(); // distribuer les cartes
     }
 }

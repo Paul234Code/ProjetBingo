@@ -17,19 +17,15 @@ namespace ProjetJeuPOO.SimiliPendu
         public Pendu(ListeDeMots listeDeMot)
         {
             this.listeDeMot = listeDeMot;
-
         }
        // Fonction qui transforme un string en string (----------)
        public string TransformRandomWord(string str)
-       {
-           
-            
+       {           
             char[] chars = str.ToCharArray();
             for (int i = 0; i < chars.Length; i++)
             {
                 chars[i] = '-';
-            }
-           
+            }         
             return new string(chars);
        }
        // Fonction qui donne un indice pour les mots de plus de 10 caracteres
@@ -69,8 +65,7 @@ namespace ProjetJeuPOO.SimiliPendu
             return liste;
         }
         public bool Verifiy(string str)
-        {
-            
+        {           
             bool trouve = false;
             for(int indice = 0; indice < str.Length; indice++)
             {
@@ -80,10 +75,8 @@ namespace ProjetJeuPOO.SimiliPendu
                 }
                 else
                 {
-                    continue;
-                    
-                }
-               
+                    continue;                    
+                }               
             }
             return trouve;
         }
@@ -117,8 +110,7 @@ namespace ProjetJeuPOO.SimiliPendu
             {
 
             }
-            return new string(TabChar);
-            
+            return new string(TabChar);           
         }
         // Fonction qui insere un caractere par un caractere donnéé
         public string InserCharAtPosition(string str,char caracter, int position)
@@ -146,9 +138,7 @@ namespace ProjetJeuPOO.SimiliPendu
                 str2 = chaine;
                 Console.WriteLine(str2);
                 Console.WriteLine(Verifiy(str2));
-
             }
-
         }
 
         public void Jouer()
@@ -160,7 +150,6 @@ namespace ProjetJeuPOO.SimiliPendu
                 string str1 = TransformRandomWord(randomWord);
                 Console.WriteLine(str1);
                 JouerAvecMot10(randomWord, str1);
-
             }
             else
             {
