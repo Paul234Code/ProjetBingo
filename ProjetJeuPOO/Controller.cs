@@ -15,9 +15,41 @@ namespace ProjetJeuPOO
             {
                  ListeDeMot = new List<string>{"Orange","Mangue", "developpement", "Recommandation", "Banana","Poire","Deroulement","Pomme","Limon","Cerise","Ordinateur"}
             };
-            // Calculer la pendule 
-            Pendu pendu = new Pendu(liste);
-            pendu.Jouer();
+            //Pendu pendu = new Pendu(liste);
+           // pendu.Jouer();
+           Hand computer = new Hand() {
+               ListeOfCard = new List<Card>()
+           };
+
+            Hand user = new Hand()
+            {
+                ListeOfCard = new List<Card>()
+            };
+            Deck desktop = new Deck(computer,user)
+            {
+                Cards = new List<Card>()
+            };
+            desktop.FullCards();
+            desktop.DealCard();
+            foreach (Card card in desktop.Cards)
+            {
+                Console.Write($"{card.CardValue} ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("=========================================================================");
+            foreach(Card card in computer.ListeOfCard)
+            {
+                Console.Write($"{card.CardValue} ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("=========================================================================");
+            foreach (Card card in user.ListeOfCard)
+            {
+                Console.Write($"{card.CardValue} ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("=========================================================================");
+            desktop.VoirScore();
         }
     }
 }

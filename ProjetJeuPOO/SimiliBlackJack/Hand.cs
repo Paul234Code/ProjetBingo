@@ -7,6 +7,11 @@ namespace ProjetJeuPOO.SimiliBlackJack
     class Hand
     {
         private List<Card> listeOfCard;
+        private bool hitCard;
+        public bool HitCard {
+            get => hitCard;
+            set => hitCard =  value;
+        }
         public List<Card> ListeOfCard {
             get => listeOfCard; 
             set => listeOfCard = value; 

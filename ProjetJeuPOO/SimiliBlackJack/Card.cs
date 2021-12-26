@@ -5,22 +5,16 @@ using System.Text;
 namespace ProjetJeuPOO.SimiliBlackJack
 {
     class Card
-    {
-        private string cardName;
+    {      
         private int cardValue;
-        // Les proprietées
-        public string CardName {
-            get => cardName; 
-            set => cardName = value; 
-        }
+        // Les proprietées      
         public int CardValue {
             get => cardValue;
             set => cardValue = value;
         }
         // Le constructeur de la classe
-        public Card(string cardName,int cardValue)
-        {
-            this.cardName = cardName;
+        public Card(int cardValue)
+        {          
             this.cardValue = cardValue;
         }
         
