@@ -9,7 +9,7 @@ namespace ProjetJeuPOO
 {
     class Controller
     {
-        static void Main(string[] args)
+        static void Main()
         {
             ListeDeMots liste = new ListeDeMots()
             {
@@ -20,18 +20,14 @@ namespace ProjetJeuPOO
            Hand computer = new Hand() {
                ListeOfCard = new List<Card>()
            };
-
             Hand user = new Hand()
             {
                 ListeOfCard = new List<Card>()
             };
-            Deck desktop = new Deck(computer,user)
-            {
-                Cards = new List<Card>()
-            };
-            desktop.FullCards();
-            desktop.DealCard();
-            foreach (Card card in desktop.Cards)
+            Deck desktop = new Deck(computer, user);          
+            desktop.ShuffleFullCards();
+            //desktop.DealCard();
+            foreach (Card card in desktop.StackOfCards)
             {
                 Console.Write($"{card.CardValue} ");
             }

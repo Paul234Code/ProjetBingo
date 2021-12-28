@@ -30,6 +30,7 @@ namespace ProjetJeuPOO.SimiliBlackJack
         public int StandHand()
         {
             int total = 0;
+           
             foreach(var card in listeOfCard)
             {
                 total += card.CardValue;

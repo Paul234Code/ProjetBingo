@@ -8,7 +8,7 @@ namespace ProjetJeuPOO.SimiliBlackJack
     {
         private Hand computer;
         private Hand user;
-        private List<Card> cards;
+        private Stack<Card> stackOfCards;
         // proprietes
         public Hand Computer {
             get => computer; 
@@ -19,16 +19,33 @@ namespace ProjetJeuPOO.SimiliBlackJack
             get => user; 
             set => user = value; 
         }
-        public List<Card> Cards {
-            get => cards; 
-            set => cards = value;
+        public Stack<Card> StackOfCards {
+            get => stackOfCards; 
+            set => stackOfCards = value;
         }
         // Le constructeur
         public Deck( Hand computer, Hand user)
         {
             this.computer = computer;
             this.user = user;
-            cards = new List<Card>() ;
+            Initialize();
+        }
+        public void Initialize()
+        {
+            stackOfCards = new Stack<Card>();
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 13; j++)
+                {
+                    stackOfCards.Push(new Card((Couleur)i, (Face)j, Math.Min(j + 1, 10)));
+                }
+            }
+           
+        }
+        // Fonction qui permet de verifier la carte si c'est un AS
+        public bool Verifier(Card card)
+        {
+            return card.CardFace == Face.AS;
         }
         // Fonction qui distribue des cartes
         public void DealCard()
@@ -41,17 +58,22 @@ namespace ProjetJeuPOO.SimiliBlackJack
         // Fonction qui permet de tirer une carte au hasard
         public Card GetRandomCard()
         {
-            Random random = new Random();
-            int valeurCard = random.Next(0, cards.Count);
-            return cards[valeurCard];
+           
+            return stackOfCards.Pop();
         }
-        // Fonction qui remplit les cartes
-        public void FullCards()
+        // Fonction qui permet de melanger  les cartes
+        public void ShuffleFullCards()
         {
-            for(int number = 1; number <= 52; number++)
-            {
-                cards.Add( new Card(number));
-            }
+            
+           
+            
+        }
+        // Fonction qui permet de permutter deux cartes
+        public void Permutter( Card card1,  Card card2)
+        {
+
+
+            
         }
         // Fonction qui permet commencer le jeu
         public void Jouer()
