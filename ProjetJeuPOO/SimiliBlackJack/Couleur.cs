@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProjetJeuPOO.SimiliBlackJack
 {
-    public enum Couleur
+    public enum Figure
     {
         TREFLE,
         PIQUE,

@@ -4,87 +4,58 @@ using System.Text;
 
 namespace ProjetJeuPOO.SimiliBlackJack
 {
-    class Deck : IBlackJack
-    {
-        private Hand computer;
-        private Hand user;
+    class Deck 
+    {       
         private Stack<Card> stackOfCards;
-        // proprietes
-        public Hand Computer {
-            get => computer; 
-            set => computer = value; 
-        }
         
-        public Hand User { 
-            get => user; 
-            set => user = value; 
-        }
         public Stack<Card> StackOfCards {
             get => stackOfCards; 
             set => stackOfCards = value;
         }
         // Le constructeur
-        public Deck( Hand computer, Hand user)
-        {
-            this.computer = computer;
-            this.user = user;
+        public Deck()
+        {          
             Initialize();
         }
         public void Initialize()
         {
             stackOfCards = new Stack<Card>();
+            
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 13; j++)
                 {
-                    stackOfCards.Push(new Card((Couleur)i, (Face)j, Math.Min(j + 1, 10)));
+                    stackOfCards.Push(new Card((Figure)i, (Face)j, Math.Min(j + 1, 10)));
                 }
-            }
-           
+            }          
         }
         // Fonction qui permet de verifier la carte si c'est un AS
         public bool Verifier(Card card)
         {
             return card.CardFace == Face.AS;
         }
-        // Fonction qui distribue des cartes
-        public void DealCard()
-        {
-            user.ListeOfCard.Add(GetRandomCard());
-            computer.ListeOfCard.Add(GetRandomCard());
-            user.ListeOfCard.Add(GetRandomCard());
-            computer.ListeOfCard.Add(GetRandomCard());           
-        }
         // Fonction qui permet de tirer une carte au hasard
         public Card GetRandomCard()
-        {
-           
+        {          
             return stackOfCards.Pop();
         }
         // Fonction qui permet de melanger  les cartes
-        public void ShuffleFullCards()
+        public void ShuffleDeckCards()
         {
-            
-           
-            
+            Card[] cardArray = stackOfCards.ToArray();
+            for (int i = 0;i < cardArray.Length -1; i++)
+            {
+                Card temp = cardArray[i];
+                cardArray[i] = cardArray[i+1];
+                cardArray[i + 1] = temp;
+            }
+           stackOfCards.Clear();
+            foreach (Card card in cardArray)
+            {
+                stackOfCards.Push(card);
+            }
+                  
         }
-        // Fonction qui permet de permutter deux cartes
-        public void Permutter( Card card1,  Card card2)
-        {
-
-
-            
-        }
-        // Fonction qui permet commencer le jeu
-        public void Jouer()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void VoirScore()
-        {
-            Console.WriteLine($"Computeur : {computer.StandHand()}");
-            Console.WriteLine($"Utilisateur : {user.StandHand()}");
-        }
+        
     }
 }

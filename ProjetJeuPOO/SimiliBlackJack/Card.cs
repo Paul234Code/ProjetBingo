@@ -6,7 +6,8 @@ namespace ProjetJeuPOO.SimiliBlackJack
 {
     class Card
     {
-        private Couleur cardColor;
+        
+        private Figure cardFigure;
         private Face cardFace;
         private int cardValue;
         // Les proprietées      
@@ -14,21 +15,26 @@ namespace ProjetJeuPOO.SimiliBlackJack
             get => cardValue;
             set => cardValue = value;
         }
-        public Couleur CardColor {
-            get => cardColor; 
-            set => cardColor = value;
+        public Figure CardFigure {
+            get => cardFigure; 
+            set => cardFigure = value;
         }
         public Face CardFace {
             get => cardFace; 
             set => cardFace = value;
-        }
+        }       
         // Le constructeur de la classe
-        public Card(Couleur cardColor,Face cardFace,int cardValue)
+        public Card(Figure cardFigure,Face cardFace, int cardValue)
         { 
-            this.cardColor = cardColor;
+            this.cardFigure = cardFigure;
             this.cardFace = cardFace;
             this.cardValue = cardValue;
         }
-        
+        // fonction qui affiche une carte
+        public override string ToString()
+        {
+            return $"{cardFace}\t|{cardFigure}\t{cardValue}";
+        }
+
     }
 }
