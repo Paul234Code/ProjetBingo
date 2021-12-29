@@ -37,8 +37,13 @@ namespace ProjetJeuPOO.SimiliBlackJack
             }
             return total;
         }
+        // Fonction qui affiche le pointage d'une main
+        public void DisplayPointage()
+        {
+            Console.WriteLine($"{name}\tPointage Courant: {StandHand()}");
+        }
         // Fonction qui teste si une main forme un blackJack
-        public bool hasBlackJack()
+        public bool hasBlackJack() 
         {
             return StandHand() == 21 && listeOfCard.Count == 2;
         }

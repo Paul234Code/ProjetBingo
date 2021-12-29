@@ -6,9 +6,9 @@ namespace ProjetJeuPOO.SimiliBlackJack
 {
     class Deck 
     {       
-        private Stack<Card> stackOfCards;
+        private List<Card> stackOfCards;
         
-        public Stack<Card> StackOfCards {
+        public List<Card> StackOfCards {
             get => stackOfCards; 
             set => stackOfCards = value;
         }
@@ -19,15 +19,16 @@ namespace ProjetJeuPOO.SimiliBlackJack
         }
         public void Initialize()
         {
-            stackOfCards = new Stack<Card>();
+            stackOfCards = new List<Card>();
             
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 13; j++)
                 {
-                    stackOfCards.Push(new Card((Figure)i, (Face)j, Math.Min(j + 1, 10)));
+                    stackOfCards.Add(new Card((Figure)i, (Face)j, Math.Min(j + 1, 10)));
                 }
-            }          
+            } 
+            ShuffleDeckCards();
         }
         // Fonction qui permet de verifier la carte si c'est un AS
         public bool Verifier(Card card)
@@ -36,24 +37,18 @@ namespace ProjetJeuPOO.SimiliBlackJack
         }
         // Fonction qui permet de tirer une carte au hasard
         public Card GetRandomCard()
-        {          
-            return stackOfCards.Pop();
+        {
+           Random random = new Random();
+            int indice = random.Next(0, stackOfCards.Count);
+            Card card = stackOfCards[indice];
+             stackOfCards.RemoveAt(indice);
+            return card;
         }
         // Fonction qui permet de melanger  les cartes
         public void ShuffleDeckCards()
         {
-            Card[] cardArray = stackOfCards.ToArray();
-            for (int i = 0;i < cardArray.Length -1; i++)
-            {
-                Card temp = cardArray[i];
-                cardArray[i] = cardArray[i+1];
-                cardArray[i + 1] = temp;
-            }
-           stackOfCards.Clear();
-            foreach (Card card in cardArray)
-            {
-                stackOfCards.Push(card);
-            }
+           stackOfCards.Reverse();
+            
                   
         }
         

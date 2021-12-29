@@ -19,7 +19,7 @@ namespace ProjetJeuPOO
            // pendu.Jouer();         
             BlackJackController blackJackController = new BlackJackController();                     
             blackJackController.DealCard();
-            blackJackController.Jouer();
+            //blackJackController.Jouer();
         }
     }
 }
