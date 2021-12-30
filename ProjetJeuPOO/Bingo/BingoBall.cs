@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ProjetJeuPOO.Bingo
 {
-    class BingoBall
+    public class BingoBall
     {
         private int number;
         private char letter;

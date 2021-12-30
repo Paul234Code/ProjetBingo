@@ -7,17 +7,17 @@ using System.Text;
 
 namespace ProjetJeuPOO.Bingo
 {
-    class BingoCard
+    public class BingoCard
     {
-        private BingoBall[,] carteJoeur ;
-        public BingoBall[,] CarteJoeur {
-            get =>carteJoeur;
-            set => carteJoeur = value;
+        private BingoBall[,] carteJoueur ;
+        public BingoBall[,] CarteJoueur {
+            get =>carteJoueur;
+            set => carteJoueur = value;
         }
         // Le constructeur de la classe
         public BingoCard()
         {
-            carteJoeur = new BingoBall[5, 5];
+            carteJoueur = new BingoBall[5, 5];
         }
         // Fonction qui permet de construire une carte du joueur
         public int[,] CreerCarteJoueur(List<int> liste)
