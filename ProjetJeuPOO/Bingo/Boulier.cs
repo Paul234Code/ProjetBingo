@@ -8,6 +8,11 @@ namespace ProjetJeuPOO.Bingo
 {
     class Boulier : IBingoBoulier
     {
+        private Player player;
+        private BingoBall[,] Annonceur;
+        private List<BingoBall> boulier;
+        // Le constructeur de la classe
+
 
 
 
@@ -35,5 +40,15 @@ namespace ProjetJeuPOO.Bingo
         {
             throw new NotImplementedException();
         }
+        public void BingoMenu()
+        {
+            Console.WriteLine("Choisir l'option suivante : ");
+            Console.WriteLine("1 - Initialiser une nouvelle partie");
+            Console.WriteLine("2 - Visualiser une carte");
+            Console.WriteLine("3 - Visualiser la carte de l'annonceur");
+            Console.WriteLine("4 - Tirez une boule");
+            Console.WriteLine("5 - Fin de partie");
+        }
+
     }
 }
