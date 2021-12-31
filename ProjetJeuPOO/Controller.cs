@@ -18,8 +18,15 @@ namespace ProjetJeuPOO
             //Pendu pendu = new Pendu(liste);
            // pendu.Jouer();         
             BlackJackController blackJackController = new BlackJackController();                     
-            blackJackController.DealCard();
+            //blackJackController.DealCard();
             //blackJackController.Jouer();
+            Boulier boulier = new Boulier();
+            boulier.Initialisation();
+            boulier.Visualiser();
+            Console.WriteLine();
+            boulier.VisualiserCarteAnnonceur();
+            boulier.getRanbomBall();
+            boulier.VisualiserCarteAnnonceur();
         }
     }
 }

@@ -7,7 +7,10 @@ namespace ProjetJeuPOO.Bingo
     public class Player
     {
         private Dictionary<int, BingoCard> dictionnary;
-        public Dictionary<int,BingoCard> Dictionnary { get; set; }
+        public Dictionary<int,BingoCard> Dictionnary {
+            get =>dictionnary; 
+            set => dictionnary = value;
+        }
         // Le constructeur
         public Player()
         {
