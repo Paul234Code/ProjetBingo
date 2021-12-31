@@ -192,10 +192,10 @@ namespace ProjetJeuPOO.Bingo
             Ajouter(bingoBall);
             foreach(var keys in player.Dictionnary.Keys)
             {
-                //if (Verifier(player.Dictionnary[keys], bingoBall))
-                //{
+                if (Verifier(player.Dictionnary[keys],bingoBall))
+                {
                     Console.WriteLine($"Boule numero {bingoBall.Number} trouver dans la carte {keys}");
-                //}
+                }
             }
             boulier.RemoveAt(number);
             return bingoBall;
@@ -206,27 +206,22 @@ namespace ProjetJeuPOO.Bingo
             if (bingoBall.Number <= 15)
             {
                 InsererNumber( bingoBall, 0);
-
             }
             else if (bingoBall.Number <= 30)
             {
                 InsererNumber( bingoBall, 1);
-
             }
             else if (bingoBall.Number <= 45)
             {
                 InsererNumber(bingoBall, 2);
-
             }
             else if (bingoBall.Number <= 60)
             {
                 InsererNumber(bingoBall, 3);
-
             }
             else
             {
                 InsererNumber(bingoBall, 4);
-
             }
         }
         // Fonction qui permet d'inserer une boule dans une colonne de la carte de l'annonceur
@@ -270,6 +265,7 @@ namespace ProjetJeuPOO.Bingo
         {
             throw new NotImplementedException();
         }
+        // Menu principal du jeu Bingo 
         public void BingoMenu()
         {
             Console.WriteLine("Choisir l'option suivante : ");
@@ -281,27 +277,33 @@ namespace ProjetJeuPOO.Bingo
         }
         // Fonction qui permet de verifier si un entier ou une boule dans le tableau
         // fonction a utilser dans pour verifier qu'une boole tirée est present dans la carte  du joueur
-        public bool Verifier(BingoCard currentBingoCard, BingoBall bingoBall)
+        public bool Verifier(BingoCard currentBingoCard,BingoBall bingoBall)
         {
             bool trouve = false;
             int ligne = 0;
-            while (ligne < currentBingoCard.CarteJoueur.GetLength(0))
-            {
-                for (int colonne = 0; colonne < currentBingoCard.CarteJoueur.GetLength(1); colonne++)
+            
+                while (ligne < currentBingoCard.CarteJoueur.GetLength(0))
                 {
-                    if (currentBingoCard.CarteJoueur[ligne, colonne].Number == bingoBall.Number)
+                    for (int colonne = 0; colonne < currentBingoCard.CarteJoueur.GetLength(1); colonne++)
                     {
-                        trouve = true;
-                        currentBingoCard.CarteJoueur[ligne, colonne] = null;
-                        break;
+                        BingoBall bingo = currentBingoCard.CarteJoueur[ligne, colonne];
+                        if (bingo == null)
+                        {
+                            continue;
+                        }
+                        else if(bingo.Number  == bingoBall.Number)
+                        {
+                            trouve = true;
+                            currentBingoCard.CarteJoueur[ligne, colonne] = null;
+                            break;                           
+                        }
+                        else
+                        {
+                            continue;
+                        }
                     }
-                    else
-                    {
-                        continue;
-                    }
-                }
-                ligne++;
-            }
+                    ligne++;
+                }           
             return trouve;
         }
 

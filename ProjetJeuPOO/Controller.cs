@@ -27,6 +27,9 @@ namespace ProjetJeuPOO
             boulier.VisualiserCarteAnnonceur();
             boulier.getRanbomBall();
             boulier.VisualiserCarteAnnonceur();
+            boulier.Visualiser();
+            boulier.Visualiser();
+            boulier.Visualiser();
         }
     }
 }

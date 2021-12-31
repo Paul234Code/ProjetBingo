@@ -34,9 +34,14 @@ namespace ProjetJeuPOO.Bingo
                     {
                         Console.Write($"{0}\t| ");
                     }
+                    else if(carteJoueur[i, j]== null)
+                    {
+                        Console.Write($"{0}\t| ");
+                    }
                     else
                     {
                         Console.Write($"{carteJoueur[i, j].Number}\t| ");
+
                     }
                 }
                 Console.WriteLine();
