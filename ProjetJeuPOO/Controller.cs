@@ -21,15 +21,28 @@ namespace ProjetJeuPOO
             //blackJackController.DealCard();
             //blackJackController.Jouer();
             Boulier boulier = new Boulier();
-            boulier.Initialisation();
-            boulier.Visualiser();
-            Console.WriteLine();
-            boulier.VisualiserCarteAnnonceur();
-            boulier.getRanbomBall();
-            boulier.VisualiserCarteAnnonceur();
-            boulier.Visualiser();
-            boulier.Visualiser();
-            boulier.Visualiser();
+            /* boulier.Initialisation();
+             boulier.Visualiser();
+             Console.WriteLine();
+             boulier.VisualiserCarteAnnonceur();
+             boulier.getRanbomBall();
+             boulier.VisualiserCarteAnnonceur();
+             boulier.Visualiser();
+             boulier.Visualiser();
+             boulier.Visualiser(); */
+            Console.WriteLine("1- Identification");
+            Console.WriteLine("2- Quitter l'Application");
+            while (!boulier.isEmpty())
+            {
+                boulier.StartBingoApp();
+            }
+        }
+        // Fonction du menu principal
+        public void MenuPrincipal()
+        {
+            Console.WriteLine("1- Jeu de Bingo");
+            Console.WriteLine("2- Jeu du SIMILI Black Jack");
+            Console.WriteLine("3- Jeu du SIMILI PENDU");
         }
     }
 }

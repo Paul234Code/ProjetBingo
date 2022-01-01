@@ -18,13 +18,8 @@ namespace ProjetJeuPOO.Bingo
             player = new Player();
             Annonceur = new BingoBall[15,5];
             InitializeBoulier();
-        }
-       // Fonction qui ajoute une boule tire dans la carte de l'Annonceur
-        public void add(BingoBall element)
-        {
-            
-        }
-        // Fonction qui permet d'initialiser le boulier et les cartes du joueurs
+        }      
+        // Fonction qui permet d'initialiser le boulier
         public void InitializeBoulier()
         {
             boulier = new List<BingoBall>();
@@ -59,6 +54,8 @@ namespace ProjetJeuPOO.Bingo
                 Console.WriteLine($"Initialisation carte numero {i}.....ok");                   
             }
             Console.WriteLine("Initialisation terminé avec success......ok");
+            Thread.Sleep(2000);
+            Console.Clear();
         }
         // Fonction qui permet de construire une carte du joueur
         public BingoCard CreerCarteJoueur()
@@ -161,6 +158,9 @@ namespace ProjetJeuPOO.Bingo
                 i++;
             }
             Console.WriteLine("-----------------------------------------");
+            Console.WriteLine();
+            Thread.Sleep(5000);
+            Console.Clear();
         }
         // fonction qui construit la colonne du milieu N
         public List<BingoBall> ConstruireMilieu(int minimum, int maximum)
@@ -189,7 +189,7 @@ namespace ProjetJeuPOO.Bingo
            Random random = new Random();
            int number = random.Next(1,boulier.Count);
            BingoBall bingoBall = boulier[number];
-            Ajouter(bingoBall);
+            add(bingoBall);
             foreach(var keys in player.Dictionnary.Keys)
             {
                 if (Verifier(player.Dictionnary[keys],bingoBall))
@@ -201,7 +201,7 @@ namespace ProjetJeuPOO.Bingo
             return bingoBall;
         }
         // Fonction qui ajoute une boule tirée au hasard dans la carte de l'annonceur
-        public void Ajouter( BingoBall bingoBall)
+        public void add( BingoBall bingoBall)
         {
             if (bingoBall.Number <= 15)
             {
@@ -250,12 +250,12 @@ namespace ProjetJeuPOO.Bingo
             }
         }
 
-
+        // Fonction qui retourne la taille de la liste
         public int getSize()
         {
             return boulier.Count;
         }
-
+        // Fonction qui verifie si le boulier est vide ou pas 
         public bool isEmpty()
         {
             return boulier.Count == 0;
@@ -263,7 +263,20 @@ namespace ProjetJeuPOO.Bingo
 
         public void restartBoulier()
         {
-            throw new NotImplementedException();
+            Console.Clear();
+            Console.WriteLine("retourner au menu pour choisir un autre jeu ou de démarrer une nouvelle partie?");
+            Console.WriteLine("1- Demarrer une nouvelle partie");
+            Console.WriteLine("2- Retourner au menu principal");           
+            string choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "1":
+                    BingoMenu();
+                    break;
+
+            }
+            BingoMenu();
+            Console.Clear();
         }
         // Menu principal du jeu Bingo 
         public void BingoMenu()
@@ -274,6 +287,30 @@ namespace ProjetJeuPOO.Bingo
             Console.WriteLine("3 - Visualiser la carte de l'annonceur");
             Console.WriteLine("4 - Tirez une boule");
             Console.WriteLine("5 - Fin de partie");
+            Console.WriteLine();
+        }
+        public void StartBingoApp()
+        {
+            BingoMenu();
+            string choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "1":
+                    Initialisation();
+                    break;
+                case "2":
+                    Visualiser();
+                    break;
+                case "3":
+                    VisualiserCarteAnnonceur();
+                    break;
+                case "4":
+                    getRanbomBall();
+                    break;
+                case "5":
+                    restartBoulier();
+                    break;
+            }
         }
         // Fonction qui permet de verifier si un entier ou une boule dans le tableau
         // fonction a utilser dans pour verifier qu'une boole tirée est present dans la carte  du joueur

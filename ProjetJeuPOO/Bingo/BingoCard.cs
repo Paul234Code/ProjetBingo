@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 // Classe représentant un objet carte pour le joueur.
 // Un joueur a au minimum une carte.
@@ -41,13 +42,15 @@ namespace ProjetJeuPOO.Bingo
                     else
                     {
                         Console.Write($"{carteJoueur[i, j].Number}\t| ");
-
                     }
                 }
                 Console.WriteLine();
                 i++;
             }
             Console.WriteLine("-----------------------------------------");
+            Thread.Sleep(4000);
+            Console.Clear();
+            
         }
 
 
