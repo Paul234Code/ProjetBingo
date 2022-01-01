@@ -15,8 +15,8 @@ namespace ProjetJeuPOO
             {
                  ListeDeMot = new List<string>{"Orange","Mangue", "developpement", "Recommandation", "Banana","Poire","Deroulement","Pomme","Limon","Cerise","Ordinateur"}
             };
-            //Pendu pendu = new Pendu(liste);
-           // pendu.Jouer();         
+            Pendu pendu = new Pendu(liste);
+            pendu.Jouer();         
             BlackJackController blackJackController = new BlackJackController();                     
             //blackJackController.DealCard();
             //blackJackController.Jouer();
@@ -29,13 +29,12 @@ namespace ProjetJeuPOO
              boulier.VisualiserCarteAnnonceur();
              boulier.Visualiser();
              boulier.Visualiser();
-             boulier.Visualiser(); */
-            Console.WriteLine("1- Identification");
-            Console.WriteLine("2- Quitter l'Application");
+             boulier.Visualiser(); 
+            
             while (!boulier.isEmpty())
             {
                 boulier.StartBingoApp();
-            }
+            } */
         }
         // Fonction du menu principal
         public void MenuPrincipal()
