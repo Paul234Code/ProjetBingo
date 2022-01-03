@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ProjetJeuPOO.SimiliPendu
 {
@@ -8,7 +7,8 @@ namespace ProjetJeuPOO.SimiliPendu
     {
         private List<string> listeDeMot;
         // Constructeur
-        public List<string> ListeDeMot {
+        public List<string> ListeDeMot
+        {
             get => listeDeMot;
             set => listeDeMot = value;
         }

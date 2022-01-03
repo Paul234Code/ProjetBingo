@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using System.Text;
 
 // Classe qui représente le boulier. On y retire les boules au hazard.
 
@@ -16,14 +15,14 @@ namespace ProjetJeuPOO.Bingo
         public Boulier()
         {
             player = new Player();
-            Annonceur = new BingoBall[15,5];
+            Annonceur = new BingoBall[15, 5];
             InitializeBoulier();
-        }      
+        }
         // Fonction qui permet d'initialiser le boulier
         public void InitializeBoulier()
         {
             boulier = new List<BingoBall>();
-            for(int i = 1; i <=75; i++)
+            for (int i = 1; i <= 75; i++)
             {
                 boulier.Add(new BingoBall(i));
             }
@@ -36,10 +35,10 @@ namespace ProjetJeuPOO.Bingo
             bool resultat = int.TryParse(numero, out int numberOfcard);
             if (resultat)
             {
-                for(int i = 1; i <= numberOfcard; i++)
+                for (int i = 1; i <= numberOfcard; i++)
                 {
                     BingoCard bingoCard = CreerCarteJoueur();
-                    player.AddBingoCard(bingoCard,i);
+                    player.AddBingoCard(bingoCard, i);
                 }
             }
             else
@@ -48,11 +47,11 @@ namespace ProjetJeuPOO.Bingo
             }
             Console.WriteLine("Initialisation du nombre de cartes en cours.........");
             Thread.Sleep(3000);
-            for(int i = 1;i <= numberOfcard; i++)
+            for (int i = 1; i <= numberOfcard; i++)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Thread.Sleep(1000);
-                Console.WriteLine($"Initialisation carte numero {i}.....ok");                   
+                Console.WriteLine($"Initialisation carte numero {i}.....ok");
             }
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Initialisation terminé avec success......ok");
@@ -89,7 +88,7 @@ namespace ProjetJeuPOO.Bingo
         {
             List<BingoBall> listeB = new List<BingoBall>();
             int indice;
-            BingoBall randomBall;            
+            BingoBall randomBall;
             Random random = new Random();
             while (listeB.Count < 5)
             {
@@ -113,7 +112,7 @@ namespace ProjetJeuPOO.Bingo
             bool result = int.TryParse(saisie, out int numeroCarte);
             if (result)
             {
-                if(numeroCarte > 0)
+                if (numeroCarte > 0)
                 {
                     bool resulat = player.Dictionnary.ContainsKey(numeroCarte);
                     if (resulat)
@@ -146,15 +145,15 @@ namespace ProjetJeuPOO.Bingo
             while (i < Annonceur.GetLength(0))
             {
                 for (int j = 0; j < Annonceur.GetLength(1); j++)
-                { 
-                    if(Annonceur[i,j] == null)
+                {
+                    if (Annonceur[i, j] == null)
                     {
                         Console.Write($"{0}\t| ");
                     }
                     else
                     {
                         Console.Write($"{Annonceur[i, j].Number}\t| ");
-                    }                                   
+                    }
                 }
                 Console.WriteLine();
                 i++;
@@ -168,13 +167,13 @@ namespace ProjetJeuPOO.Bingo
         public List<BingoBall> ConstruireMilieu(int minimum, int maximum)
         {
             List<BingoBall> listeB = new List<BingoBall>();
-            int indice; 
+            int indice;
             BingoBall randomBall;
             Random random = new Random();
             while (listeB.Count < 5)
             {
                 indice = random.Next(0, boulier.Count);
-                randomBall =  boulier[indice];
+                randomBall = boulier[indice];
                 if (minimum <= randomBall.Number && randomBall.Number <= maximum)
                 {
                     if (!listeB.Contains(randomBall))
@@ -188,13 +187,13 @@ namespace ProjetJeuPOO.Bingo
         // Fonction qui permet de tirer une boule au hasard dans le boulier
         public BingoBall getRanbomBall()
         {
-           Random random = new Random();
-           int number = random.Next(1,boulier.Count);
-           BingoBall bingoBall = boulier[number];
+            Random random = new Random();
+            int number = random.Next(1, boulier.Count);
+            BingoBall bingoBall = boulier[number];
             add(bingoBall);
-            foreach(var keys in player.Dictionnary.Keys)
+            foreach (var keys in player.Dictionnary.Keys)
             {
-                if (Verifier(player.Dictionnary[keys],bingoBall))
+                if (Verifier(player.Dictionnary[keys], bingoBall))
                 {
                     Console.WriteLine($"Boule numero {bingoBall.Number} trouver dans la carte {keys}");
                 }
@@ -203,15 +202,15 @@ namespace ProjetJeuPOO.Bingo
             return bingoBall;
         }
         // Fonction qui ajoute une boule tirée au hasard dans la carte de l'annonceur
-        public void add( BingoBall bingoBall)
+        public void add(BingoBall bingoBall)
         {
             if (bingoBall.Number <= 15)
             {
-                InsererNumber( bingoBall, 0);
+                InsererNumber(bingoBall, 0);
             }
             else if (bingoBall.Number <= 30)
             {
-                InsererNumber( bingoBall, 1);
+                InsererNumber(bingoBall, 1);
             }
             else if (bingoBall.Number <= 45)
             {
@@ -268,7 +267,7 @@ namespace ProjetJeuPOO.Bingo
             Console.Clear();
             Console.WriteLine("retourner au menu pour choisir un autre jeu ou de démarrer une nouvelle partie?");
             Console.WriteLine("1- Demarrer une nouvelle partie");
-            Console.WriteLine("2- Retourner au menu principal");           
+            Console.WriteLine("2- Retourner au menu principal");
             string choice = Console.ReadLine();
             switch (choice)
             {
@@ -316,33 +315,33 @@ namespace ProjetJeuPOO.Bingo
         }
         // Fonction qui permet de verifier si un entier ou une boule dans le tableau
         // fonction a utilser dans pour verifier qu'une boole tirée est present dans la carte  du joueur
-        public bool Verifier(BingoCard currentBingoCard,BingoBall bingoBall)
+        public bool Verifier(BingoCard currentBingoCard, BingoBall bingoBall)
         {
             bool trouve = false;
             int ligne = 0;
-            
-                while (ligne < currentBingoCard.CarteJoueur.GetLength(0))
+
+            while (ligne < currentBingoCard.CarteJoueur.GetLength(0))
+            {
+                for (int colonne = 0; colonne < currentBingoCard.CarteJoueur.GetLength(1); colonne++)
                 {
-                    for (int colonne = 0; colonne < currentBingoCard.CarteJoueur.GetLength(1); colonne++)
+                    BingoBall bingo = currentBingoCard.CarteJoueur[ligne, colonne];
+                    if (bingo == null)
                     {
-                        BingoBall bingo = currentBingoCard.CarteJoueur[ligne, colonne];
-                        if (bingo == null)
-                        {
-                            continue;
-                        }
-                        else if(bingo.Number  == bingoBall.Number)
-                        {
-                            trouve = true;
-                            currentBingoCard.CarteJoueur[ligne, colonne] = null;
-                            break;                           
-                        }
-                        else
-                        {
-                            continue;
-                        }
+                        continue;
                     }
-                    ligne++;
-                }           
+                    else if (bingo.Number == bingoBall.Number)
+                    {
+                        trouve = true;
+                        currentBingoCard.CarteJoueur[ligne, colonne] = null;
+                        break;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                ligne++;
+            }
             return trouve;
         }
 

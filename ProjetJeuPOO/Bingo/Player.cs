@@ -1,27 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace ProjetJeuPOO.Bingo
 {
     public class Player
     {
         private Dictionary<int, BingoCard> dictionnary;
-        public Dictionary<int,BingoCard> Dictionnary {
-            get =>dictionnary; 
+        public Dictionary<int, BingoCard> Dictionnary
+        {
+            get => dictionnary;
             set => dictionnary = value;
         }
         // Le constructeur
         public Player()
         {
             dictionnary = new Dictionary<int, BingoCard>();
-        } 
+        }
         // Fonction qui va ajouter une carte dans le dictionnaire
-        public void AddBingoCard(BingoCard bingoCard,int numero)
+        public void AddBingoCard(BingoCard bingoCard, int numero)
         {
             dictionnary[numero] = bingoCard;
         }
-        
-        
+
+
     }
 }

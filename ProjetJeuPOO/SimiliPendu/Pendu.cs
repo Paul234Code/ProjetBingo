@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ProjetJeuPOO.SimiliPendu
 {
@@ -9,47 +8,48 @@ namespace ProjetJeuPOO.SimiliPendu
         //static int nbrePartieJouee = 0;
         //static int nbreVictoires = 0;
         private ListeDeMots listeDeMot;
-        public ListeDeMots ListeDeMots {
-            get => listeDeMot; 
-            set => listeDeMot = value; 
-        } 
+        public ListeDeMots ListeDeMots
+        {
+            get => listeDeMot;
+            set => listeDeMot = value;
+        }
         // Le constructeur de la classe Pendu
         public Pendu(ListeDeMots listeDeMot)
         {
             this.listeDeMot = listeDeMot;
         }
-       // Fonction qui transforme un string en string (----------)
-       public string TransformRandomWord(string str)
-       {           
+        // Fonction qui transforme un string en string (----------)
+        public string TransformRandomWord(string str)
+        {
             char[] chars = str.ToCharArray();
             for (int i = 0; i < chars.Length; i++)
             {
                 chars[i] = '-';
-            }         
+            }
             return new string(chars);
-       }
-       // Fonction qui donne un indice pour les mots de plus de 10 caracteres
-       public string TransformRandomWord2(string str)
-       {
+        }
+        // Fonction qui donne un indice pour les mots de plus de 10 caracteres
+        public string TransformRandomWord2(string str)
+        {
             List<int> listeEntiers = GetRandomNumber(str.Length);
             char[] TabChar = str.ToCharArray();
-            for(int i = 0; i< TabChar.Length; i++)
+            for (int i = 0; i < TabChar.Length; i++)
             {
                 TabChar[i] = '-';
             }
-            for(int i = 0; i< listeEntiers.Count; i++)
+            for (int i = 0; i < listeEntiers.Count; i++)
             {
                 int indice = listeEntiers[i];
                 TabChar[indice] = str[indice];
             }
             return new string(TabChar);
-       }
-       // Fonction qui retourne une liste de 4 entier distinctes
+        }
+        // Fonction qui retourne une liste de 4 entier distinctes
         public List<int> GetRandomNumber(int n)
         {
             List<int> liste = new List<int>();
             Random random = new Random();
-            int number ;
+            int number;
             while (liste.Count < 6)
             {
                 number = random.Next(0, n);
@@ -65,30 +65,30 @@ namespace ProjetJeuPOO.SimiliPendu
             return liste;
         }
         public bool Verifiy(string str)
-        {           
+        {
             bool trouve = false;
-            for(int indice = 0; indice < str.Length; indice++)
+            for (int indice = 0; indice < str.Length; indice++)
             {
-                if(str[indice] == '-')
+                if (str[indice] == '-')
                 {
                     trouve = true;
                 }
                 else
                 {
-                    continue;                    
-                }               
+                    continue;
+                }
             }
             return trouve;
         }
         // Fonction qui permet de retourner l'indice d'un caractere dans un tableau
-       public int GetIndexOf( char[] Tabchar,char caracter)
-       {
+        public int GetIndexOf(char[] Tabchar, char caracter)
+        {
             int i = 0;
-            while (i < Tabchar.Length && Tabchar[i]!= caracter)
+            while (i < Tabchar.Length && Tabchar[i] != caracter)
             {
                 i++;
             }
-            if(i < Tabchar.Length)
+            if (i < Tabchar.Length)
             {
                 Tabchar[i] = '=';
                 return i;
@@ -97,9 +97,9 @@ namespace ProjetJeuPOO.SimiliPendu
             {
                 return -1;
             }
-       }
+        }
         // Fonction qui inserre un char dans le mot transformer
-        public string InsererChar(string str, char caracter,int position)
+        public string InsererChar(string str, char caracter, int position)
         {
             char[] TabChar = str.ToCharArray();
             if (TabChar[position] == '-')
@@ -110,10 +110,10 @@ namespace ProjetJeuPOO.SimiliPendu
             {
 
             }
-            return new string(TabChar);           
+            return new string(TabChar);
         }
         // Fonction qui insere un caractere par un caractere donnéé
-        public string InserCharAtPosition(string str,char caracter, int position)
+        public string InserCharAtPosition(string str, char caracter, int position)
         {
             char[] Tab = str.ToCharArray();
             Tab[position] = caracter;
@@ -151,15 +151,15 @@ namespace ProjetJeuPOO.SimiliPendu
                 else
                 {
                     Console.WriteLine("Veuillez entrer une lettre valide");
-                }                                                                            
+                }
             }
         }
-// 
+        // 
         public void Jouer()
         {
             string randomWord = listeDeMot.getRandomWord();
             Console.WriteLine(randomWord);
-            if(randomWord.Length <= 10)
+            if (randomWord.Length <= 10)
             {
                 string str1 = TransformRandomWord(randomWord);
                 Console.WriteLine(str1);

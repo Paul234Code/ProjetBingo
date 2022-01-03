@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ProjetJeuPOO.Bingo;
+﻿using ProjetJeuPOO.Bingo;
 using ProjetJeuPOO.SimiliBlackJack;
 using ProjetJeuPOO.SimiliPendu;
+using System;
 
 namespace ProjetJeuPOO
 {

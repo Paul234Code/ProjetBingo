@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 
 // Classe représentant un objet carte pour le joueur.
@@ -9,9 +7,10 @@ namespace ProjetJeuPOO.Bingo
 {
     public class BingoCard
     {
-        private BingoBall[,] carteJoueur ;
-        public BingoBall[,] CarteJoueur {
-            get =>carteJoueur;
+        private BingoBall[,] carteJoueur;
+        public BingoBall[,] CarteJoueur
+        {
+            get => carteJoueur;
             set => carteJoueur = value;
         }
         // Le constructeur de la classe
@@ -31,11 +30,11 @@ namespace ProjetJeuPOO.Bingo
             {
                 for (int j = 0; j < carteJoueur.GetLength(1); j++)
                 {
-                    if(i == 2 && j == 2)
+                    if (i == 2 && j == 2)
                     {
                         Console.Write($"{0}\t| ");
                     }
-                    else if(carteJoueur[i, j]== null)
+                    else if (carteJoueur[i, j] == null)
                     {
                         Console.Write($"{0}\t| ");
                     }
@@ -50,7 +49,7 @@ namespace ProjetJeuPOO.Bingo
             Console.WriteLine("-----------------------------------------");
             Thread.Sleep(4000);
             Console.Clear();
-            
+
         }
 
 

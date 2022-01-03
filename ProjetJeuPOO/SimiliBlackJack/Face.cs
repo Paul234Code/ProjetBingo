@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ProjetJeuPOO.SimiliBlackJack
+﻿namespace ProjetJeuPOO.SimiliBlackJack
 {
     public enum Face
     {

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ProjetJeuPOO.Bingo;
+﻿using ProjetJeuPOO.Bingo;
 using ProjetJeuPOO.SimiliBlackJack;
 using ProjetJeuPOO.SimiliPendu;
+using System.Collections.Generic;
 
 namespace ProjetJeuPOO
 {
@@ -13,11 +11,11 @@ namespace ProjetJeuPOO
         {
             ListeDeMots liste = new ListeDeMots()
             {
-                 ListeDeMot = new List<string>{"Orange","Mangue", "developpement", "Recommandation", "Banana","Poire","Deroulement","Pomme","Limon","Cerise","Ordinateur"}
+                ListeDeMot = new List<string> { "Orange", "Mangue", "developpement", "Recommandation", "Banana", "Poire", "Deroulement", "Pomme", "Limon", "Cerise", "Ordinateur" }
             };
             Pendu pendu = new Pendu(liste);
             //pendu.Jouer();         
-            BlackJackController blackJackController = new BlackJackController();                     
+            BlackJackController blackJackController = new BlackJackController();
             //blackJackController.DealCard();
             blackJackController.Jouer();
             Boulier boulier = new Boulier();
