@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProjetJeuPOO.SimiliBlackJack
 {
-    interface IBlackJack
+    public interface IBlackJack
     {
         public void Jouer();
         public void VoirScore();

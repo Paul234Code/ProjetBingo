@@ -50,9 +50,11 @@ namespace ProjetJeuPOO.Bingo
             Thread.Sleep(3000);
             for(int i = 1;i <= numberOfcard; i++)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Thread.Sleep(1000);
                 Console.WriteLine($"Initialisation carte numero {i}.....ok");                   
             }
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Initialisation terminé avec success......ok");
             Thread.Sleep(2000);
             Console.Clear();

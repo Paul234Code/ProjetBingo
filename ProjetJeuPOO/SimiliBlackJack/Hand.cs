@@ -4,22 +4,18 @@ using System.Text;
 
 namespace ProjetJeuPOO.SimiliBlackJack
 {
-    class Hand
+    public class Hand
     {
-        private string name;
-        private List<Card> listeOfCard;
-        public string Name {
-            get => name; 
-            set => name = value;
-        }
+        
+        private List<Card> listeOfCard;       
         public List<Card> ListeOfCard {
             get => listeOfCard; 
             set => listeOfCard = value; 
         }
         // constructeur
-        public Hand(string name)
+        public Hand()
         {
-            this.name = name;
+            
             listeOfCard = new List<Card>();
         }
         //fonction qui ajoute une carte dans la main
@@ -35,12 +31,19 @@ namespace ProjetJeuPOO.SimiliBlackJack
             {
                 total += card.CardValue;
             }
+            foreach(var card in listeOfCard)
+            {
+                if(card.CardFace == Face.AS)
+                {
+                    total += 10;
+                }
+            }
             return total;
         }
         // Fonction qui affiche le pointage d'une main
         public void DisplayPointage()
         {
-            Console.WriteLine($"{name}\tPointage Courant: {StandHand()}");
+            Console.WriteLine($"Pointage Courant:\t\t{StandHand()}");
         }
         // Fonction qui teste si une main forme un blackJack
         public bool hasBlackJack() 

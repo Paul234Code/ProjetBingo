@@ -131,16 +131,30 @@ namespace ProjetJeuPOO.SimiliPendu
                 Console.WriteLine("Enter a letter:");
                 string saisie = Console.ReadLine();
                 bool conversion = char.TryParse(saisie, out char chars);
-                int indice = GetIndexOf(tempon.ToCharArray(), chars);
-                Console.WriteLine("indice = " + indice);
-                string chaine = InsererChar(str2, chars, indice);
-                tempon = InserCharAtPosition(tempon, '=', indice);
-                str2 = chaine;
-                Console.WriteLine(str2);
-                Console.WriteLine(Verifiy(str2));
+                if (conversion)
+                {
+                    int indice = GetIndexOf(tempon.ToCharArray(), chars);
+                    if (indice >= 0)
+                    {
+                        Console.WriteLine("indice = " + indice);
+                        string chaine = InsererChar(str2, chars, indice);
+                        tempon = InserCharAtPosition(tempon, '=', indice);
+                        str2 = chaine;
+                        Console.WriteLine(str2);
+                        Console.WriteLine(Verifiy(str2));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Le caractere ne fait pas partie du mot");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Veuillez entrer une lettre valide");
+                }                                                                            
             }
         }
-
+// 
         public void Jouer()
         {
             string randomWord = listeDeMot.getRandomWord();

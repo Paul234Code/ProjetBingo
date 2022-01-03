@@ -4,9 +4,8 @@ using System.Text;
 
 namespace ProjetJeuPOO.SimiliBlackJack
 {
-    class Card
-    {
-        
+    public class Card
+    {       
         private Figure cardFigure;
         private Face cardFace;
         private int cardValue;
@@ -33,7 +32,7 @@ namespace ProjetJeuPOO.SimiliBlackJack
         // fonction qui affiche une carte
         public override string ToString()
         {
-            return $"{cardFace}\t|{cardFigure}\t{cardValue}";
+            return $"{cardFace}\t\t {cardFigure}\t\t{cardValue}";
         }
 
     }
