@@ -13,11 +13,13 @@ namespace ProjetJeuPOO
             {
                 ListeDeMot = new List<string> { "Orange", "Mangue", "developpement", "Recommandation", "Banana", "Poire", "Deroulement", "Pomme", "Limon", "Cerise", "Ordinateur" }
             };
+            StartApplication app =  new StartApplication();
+            app.MenuPrincipal();
             Pendu pendu = new Pendu(liste);
             //pendu.Jouer();         
             BlackJackController blackJackController = new BlackJackController();
             //blackJackController.DealCard();
-            blackJackController.Jouer();
+            //blackJackController.Jouer();
             Boulier boulier = new Boulier();
             /* boulier.Initialisation();
              boulier.Visualiser();

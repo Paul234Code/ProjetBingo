@@ -10,12 +10,17 @@ namespace ProjetJeuPOO
         private Boulier boulier;
         private BlackJackController blackJackController;
         private Pendu pendu;
+        private ListeDeMots liste;
         // Le constructeur
         public StartApplication()
         {
             boulier = new Boulier();
             blackJackController = new BlackJackController();
-            //pendu = new Pendu();
+            liste = new ListeDeMots()
+            {
+                ListeDeMot = new System.Collections.Generic.List<string>() { "Orange", "Mangue", "developpement", "Recommandation", "Banana", "Poire", "Deroulement", "Pomme", "Limon", "Cerise", "Ordinateur" }
+            };
+            pendu = new Pendu(liste);
         }
         // Fonction qui affiche le Menu principal
         public void MenuPrincipal()
@@ -23,6 +28,19 @@ namespace ProjetJeuPOO
             Console.WriteLine("1- Jeu de Bingo");
             Console.WriteLine("2- Jeu du SIMILI Black Jack");
             Console.WriteLine("3- Jeu du SIMILI PENDU");
+            string choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "1":
+                    boulier.BingoMenu();
+                    break;
+                case "2":
+                    blackJackController.Jouer();
+                    break;
+                    case"3":
+                    pendu.Jouer();
+                    break;
+            }
         }
 
 

@@ -38,15 +38,25 @@ namespace ProjetJeuPOO.SimiliBlackJack
         // Fonction qui permet de tirer une carte au hasard
         public Card GetRandomCard()
         {
-            Random random = new Random();
-            int indice = random.Next(0, stackOfCards.Count);
-            Card card = stackOfCards[indice];
-            stackOfCards.RemoveAt(indice);
+            
+            Card card = stackOfCards[stackOfCards.Count -1];
+            stackOfCards.RemoveAt(stackOfCards.Count -1);
             return card;
         }
         // Fonction qui permet de melanger  les cartes
         public void ShuffleDeckCards()
         {
+            
+            Random rng = new Random();
+            int n = stackOfCards.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                Card card = stackOfCards[k];
+                stackOfCards[k] = stackOfCards[n];
+                stackOfCards[n] = card;
+            }
             stackOfCards.Reverse();
 
 

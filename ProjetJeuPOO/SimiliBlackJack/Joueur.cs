@@ -5,9 +5,9 @@
 
         private decimal mise;
         private Hand handPlayer;
-        private static int nombreDePoints;
-        private static int nombreDePartie;
-        private static int nombreVictoires;
+        private static int nombreDePoints = 0;
+        private static int nombreDePartie = 0;
+        private static int nombreVictoires = 0;
         // Les proprietes de la classe
         public string Name { get; set; }
         public decimal Mise

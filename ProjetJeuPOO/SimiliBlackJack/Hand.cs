@@ -41,9 +41,9 @@ namespace ProjetJeuPOO.SimiliBlackJack
             return total;
         }
         // Fonction qui affiche le pointage d'une main
-        public void DisplayPointage()
+        public void DisplayPointage(string name)
         {
-            Console.WriteLine($"Pointage Courant:\t\t{StandHand()}");
+            Console.WriteLine($"Pointage Courant du {name} :\t\t{StandHand()}");
         }
         // Fonction qui teste si une main forme un blackJack
         public bool hasBlackJack()
