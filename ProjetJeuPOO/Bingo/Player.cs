@@ -10,6 +10,9 @@ namespace ProjetJeuPOO.Bingo
             get => dictionnary;
             set => dictionnary = value;
         }
+        private static int nombreParties;
+        private static int nombreParts;
+        private static int nombreVictoires;
         // Le constructeur
         public Player()
         {

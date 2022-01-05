@@ -18,7 +18,7 @@ namespace ProjetJeuPOO
             blackJackController = new BlackJackController();
             liste = new ListeDeMots()
             {
-                ListeDeMot = new System.Collections.Generic.List<string>() { "Orange", "Mangue", "developpement", "Recommandation", "Banana", "Poire", "Deroulement", "Pomme", "Limon", "Cerise", "Ordinateur" }
+                ListeDeMot = new System.Collections.Generic.List<string>() {"Orange", "Mangue","Bonjour", "developpement", "Recommandation", "Banana", "Poire", "Deroulement", "Pomme", "Limon", "Cerise", "Ordinateur" }
             };
             pendu = new Pendu(liste);
         }

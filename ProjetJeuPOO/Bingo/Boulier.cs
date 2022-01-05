@@ -56,7 +56,7 @@ namespace ProjetJeuPOO.Bingo
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Initialisation terminé avec success......ok");
             Thread.Sleep(2000);
-            Console.Clear();
+            //Console.Clear();
         }
         // Fonction qui permet de construire une carte du joueur
         public BingoCard CreerCarteJoueur()
@@ -161,7 +161,7 @@ namespace ProjetJeuPOO.Bingo
             Console.WriteLine("-----------------------------------------");
             Console.WriteLine();
             Thread.Sleep(5000);
-            Console.Clear();
+           // Console.Clear();
         }
         // fonction qui construit la colonne du milieu N
         public List<BingoBall> ConstruireMilieu(int minimum, int maximum)
@@ -292,6 +292,10 @@ namespace ProjetJeuPOO.Bingo
         }
         public void StartBingoApp()
         {
+            Initialisation();
+            Visualiser();
+            Console.WriteLine();
+            VisualiserCarteAnnonceur();
             BingoMenu();
             string choice = Console.ReadLine();
             switch (choice)

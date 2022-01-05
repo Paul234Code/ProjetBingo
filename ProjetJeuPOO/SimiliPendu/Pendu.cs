@@ -44,7 +44,7 @@ namespace ProjetJeuPOO.SimiliPendu
             }
             return new string(TabChar);
         }
-        // Fonction qui retourne une liste de 4 entier distinctes
+        // Fonction qui retourne une liste de 5 entier distinctes
         public List<int> GetRandomNumber(int n)
         {
             List<int> liste = new List<int>();
@@ -80,23 +80,24 @@ namespace ProjetJeuPOO.SimiliPendu
             }
             return trouve;
         }
-        // Fonction qui permet de retourner l'indice d'un caractere dans un tableau
-        public int GetIndexOf(char[] Tabchar, char caracter)
+        // Fonction qui permet de retourner la liste des indices d'un caractere dans un tableau
+        public List<int> GetIndexOf(char[] Tabchar, char caracter)
         {
             int i = 0;
-            while (i < Tabchar.Length && Tabchar[i] != caracter)
+            List<int> listeIndice = new List<int>();
+            while (i < Tabchar.Length)
             {
+                if(Tabchar[i] == caracter)
+                {
+                    listeIndice.Add(i);
+                }
+                else
+                {
+                    //continue;
+                }
                 i++;
             }
-            if (i < Tabchar.Length)
-            {
-                Tabchar[i] = '=';
-                return i;
-            }
-            else
-            {
-                return -1;
-            }
+            return listeIndice;
         }
         // Fonction qui inserre un char dans le mot transformer
         public string InsererChar(string str, char caracter, int position)
@@ -133,20 +134,20 @@ namespace ProjetJeuPOO.SimiliPendu
                 bool conversion = char.TryParse(saisie, out char chars);
                 if (conversion)
                 {
-                    int indice = GetIndexOf(tempon.ToCharArray(), chars);
-                    if (indice >= 0)
-                    {
-                        Console.WriteLine("indice = " + indice);
-                        string chaine = InsererChar(str2, chars, indice);
-                        tempon = InserCharAtPosition(tempon, '=', indice);
-                        str2 = chaine;
-                        Console.WriteLine(str2);
-                        Console.WriteLine(Verifiy(str2));
+                    List<int> indices = GetIndexOf(tempon.ToCharArray(), chars);
+                    int longueur = indices.Count ;                  
+                    while (longueur > 0) 
+                    { 
+                        int index = indices[0];
+                        //Console.WriteLine("indice = " + index);
+                        string chaine = InsererChar(str2, chars, index);
+                        tempon = InserCharAtPosition(tempon, '=', index);
+                        str2 = chaine;                       
+                        indices.RemoveAt(0);
+                        longueur--;
                     }
-                    else
-                    {
-                        Console.WriteLine("Le caractere ne fait pas partie du mot");
-                    }
+                    Console.WriteLine(str2);
+                    Console.WriteLine(Verifiy(str2));
                 }
                 else
                 {
@@ -154,7 +155,7 @@ namespace ProjetJeuPOO.SimiliPendu
                 }
             }
         }
-        // 
+        // Fonction qui demarre le jeu
         public void Jouer()
         {
             string randomWord = listeDeMot.getRandomWord();

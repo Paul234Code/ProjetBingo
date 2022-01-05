@@ -48,11 +48,7 @@ namespace ProjetJeuPOO.Bingo
             }
             Console.WriteLine("-----------------------------------------");
             Thread.Sleep(4000);
-            Console.Clear();
-
+            //Console.Clear();
         }
-
-
-
     }
 }
