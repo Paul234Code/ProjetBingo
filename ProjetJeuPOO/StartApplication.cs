@@ -23,11 +23,12 @@ namespace ProjetJeuPOO
             pendu = new Pendu(liste);
         }
         // Fonction qui affiche le Menu principal
-        public void MenuPrincipal()
+        public  void MenuPrincipal()
         {
             Console.WriteLine("1- Jeu de Bingo");
             Console.WriteLine("2- Jeu du SIMILI Black Jack");
             Console.WriteLine("3- Jeu du SIMILI PENDU");
+            Console.WriteLine("4- Femer Session");
             string choice = Console.ReadLine();
             switch (choice)
             {
@@ -39,6 +40,9 @@ namespace ProjetJeuPOO
                     break;
                     case"3":
                     pendu.Jouer();
+                    break;
+                case"4":
+                    System.Environment.Exit(0);
                     break;
             }
         }

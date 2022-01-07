@@ -282,6 +282,8 @@ namespace ProjetJeuPOO.Bingo
         // Menu principal du jeu Bingo 
         public void BingoMenu()
         {
+            Console.WriteLine("Bienvenue dans le Jeu du Bingo");
+            Console.WriteLine();
             Console.WriteLine("Choisir l'option suivante : ");
             Console.WriteLine("1 - Initialiser une nouvelle partie");
             Console.WriteLine("2 - Visualiser une carte");

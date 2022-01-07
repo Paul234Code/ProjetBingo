@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace ProjetJeuPOO.SimiliPendu
 {
@@ -7,12 +8,17 @@ namespace ProjetJeuPOO.SimiliPendu
     {
         //static int nbrePartieJouee = 0;
         //static int nbreVictoires = 0;
+        //static int PointsDeVies = 0;
         private ListeDeMots listeDeMot;
         private Dictionary<char, bool> lettresJouees ;
         public ListeDeMots ListeDeMots
         {
             get => listeDeMot;
             set => listeDeMot = value;
+        }
+        public Dictionary<char,bool> LettresJouees {
+          get => lettresJouees;
+          set => lettresJouees = value;
         }
         // Le constructeur de la classe Pendu
         public Pendu(ListeDeMots listeDeMot)
@@ -168,6 +174,10 @@ namespace ProjetJeuPOO.SimiliPendu
         // Fonction qui demarre le jeu
         public void Jouer()
         {
+            Console.WriteLine("Bienvenue dans le jeu SIMILI PENDU");
+            Console.WriteLine();          
+            Console.WriteLine("Demarrage du jeu en cours.......");
+            Thread.Sleep(3000);
             string randomWord = listeDeMot.getRandomWord();
             Console.WriteLine(randomWord);
             if (randomWord.Length <= 10)
@@ -183,6 +193,7 @@ namespace ProjetJeuPOO.SimiliPendu
                 AvoirUnIndice(randomWord);
                 JouerAvecMot10(randomWord, str2);
             }
+            Console.Clear();
         }
         // Possibilité d'avoir un indice pour un mot de plus de 10 caracteres
         public void AvoirUnIndice(string str)
@@ -213,7 +224,11 @@ namespace ProjetJeuPOO.SimiliPendu
             List<int> liste = new List<int>();
             while (number >= 1)
             {
-                liste.Add(random.Next(0,str.Length));
+                int valeur = random.Next(0, str.Length);
+                if (!liste.Contains(valeur))
+                {
+                    liste.Add(valeur);
+                }               
                 number--;
             }
             return liste;
@@ -221,7 +236,7 @@ namespace ProjetJeuPOO.SimiliPendu
         // Fonction qui permet de jouer une nouvelle partie
         public void NouvellePartie()
         {
-
+            Jouer();
         }
     }
 }
