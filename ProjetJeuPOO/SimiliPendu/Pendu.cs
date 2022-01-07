@@ -8,6 +8,7 @@ namespace ProjetJeuPOO.SimiliPendu
         //static int nbrePartieJouee = 0;
         //static int nbreVictoires = 0;
         private ListeDeMots listeDeMot;
+        private Dictionary<char, bool> lettresJouees ;
         public ListeDeMots ListeDeMots
         {
             get => listeDeMot;
@@ -17,6 +18,7 @@ namespace ProjetJeuPOO.SimiliPendu
         public Pendu(ListeDeMots listeDeMot)
         {
             this.listeDeMot = listeDeMot;
+            lettresJouees = new Dictionary<char, bool>();
         }
         // Fonction qui transforme un string en string (----------)
         public string TransformRandomWord(string str)
@@ -65,20 +67,8 @@ namespace ProjetJeuPOO.SimiliPendu
             return liste;
         }
         public bool Verifiy(string str)
-        {
-            bool trouve = false;
-            for (int indice = 0; indice < str.Length; indice++)
-            {
-                if (str[indice] == '-')
-                {
-                    trouve = true;
-                }
-                else
-                {
-                    continue;
-                }
-            }
-            return trouve;
+        {           
+            return str.Contains('-');
         }
         // Fonction qui permet de retourner la liste des indices d'un caractere dans un tableau
         public List<int> GetIndexOf(char[] Tabchar, char caracter)
@@ -127,31 +117,51 @@ namespace ProjetJeuPOO.SimiliPendu
         public void JouerAvecMot10(string str1, string str2)
         {
             string tempon = str1;
+            var lettresJouees = new Dictionary<char, bool>();
             while (Verifiy(str2))
             {
                 Console.WriteLine("Enter a letter:");
                 string saisie = Console.ReadLine();
-                bool conversion = char.TryParse(saisie, out char chars);
-                if (conversion)
+                bool conversion = char.TryParse(saisie, out char chars);             
+                if (conversion && char.IsLetter(chars))
                 {
-                    List<int> indices = GetIndexOf(tempon.ToCharArray(), chars);
-                    int longueur = indices.Count ;                  
-                    while (longueur > 0) 
-                    { 
-                        int index = indices[0];
-                        //Console.WriteLine("indice = " + index);
-                        string chaine = InsererChar(str2, chars, index);
-                        tempon = InserCharAtPosition(tempon, '=', index);
-                        str2 = chaine;                       
-                        indices.RemoveAt(0);
-                        longueur--;
+                    if (tempon.Contains(chars)) //&& 
+                    {
+                        if (lettresJouees.ContainsKey(chars))
+                        {
+                            Console.WriteLine($"La lettre {chars} est deja jouéé", Console.ForegroundColor = ConsoleColor.Red);
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                        else
+                        {
+                            List<int> indices = GetIndexOf(tempon.ToCharArray(), chars);
+                            int longueur = indices.Count;
+                            Console.WriteLine($"Bravo! le  mot contient  la lettre {chars}", Console.ForegroundColor = ConsoleColor.Green);
+                            Console.ForegroundColor = ConsoleColor.White;
+                            while (longueur > 0)
+                            {
+                                int index = indices[0];                            
+                                string chaine = InsererChar(str2, chars, index);
+                                //tempon = InserCharAtPosition(tempon, '=', index);
+                                str2 = chaine;
+                                indices.RemoveAt(0);
+                                longueur--;
+                            }
+                            Console.WriteLine(str2);
+                            Console.WriteLine(Verifiy(str2));
+                            lettresJouees[chars] = true;
+                        }
                     }
-                    Console.WriteLine(str2);
-                    Console.WriteLine(Verifiy(str2));
-                }
+                    else
+                    {
+                        Console.WriteLine($"Le mot ne contient pas la lettre {chars}", Console.ForegroundColor = ConsoleColor.Red);
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }                       
+                }               
                 else
                 {
-                    Console.WriteLine("Veuillez entrer une lettre valide");
+                    Console.WriteLine("Veuillez entrer une lettre valide", Console.ForegroundColor = ConsoleColor.Red);
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
             }
         }
@@ -168,10 +178,50 @@ namespace ProjetJeuPOO.SimiliPendu
             }
             else
             {
-                string str2 = TransformRandomWord2(randomWord);
+                string str2 = TransformRandomWord(randomWord);
                 Console.WriteLine(str2);
+                AvoirUnIndice(randomWord);
                 JouerAvecMot10(randomWord, str2);
             }
+        }
+        // Possibilité d'avoir un indice pour un mot de plus de 10 caracteres
+        public void AvoirUnIndice(string str)
+        {
+            Console.WriteLine("Le mot a devinner contient plus de 10 lettres"); 
+            Console.WriteLine("Mais avez droit a un indice et voici comment faire");
+            Console.WriteLine("Entrer le nombre de caractere pour indice(max: 6)");
+            string str2 = Console.ReadLine();
+            bool resultat = int.TryParse(str2, out int number);
+            if (resultat)
+            {
+                var liste = GetListeNumber(str, number);
+                Console.WriteLine("Le mot contient les lettres suivants");
+                foreach (var item in liste)
+                {                   
+                    Console.WriteLine($"{str.ToCharArray()[item]}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Entrer un nombre entier de caractere valide");
+            }
+        }
+        // Fonction qui genere un nombre de valeur aleatoirs et retourne une liste
+        public List<int> GetListeNumber(string str,int number)
+        {
+            Random random = new Random();
+            List<int> liste = new List<int>();
+            while (number >= 1)
+            {
+                liste.Add(random.Next(0,str.Length));
+                number--;
+            }
+            return liste;
+        }
+        // Fonction qui permet de jouer une nouvelle partie
+        public void NouvellePartie()
+        {
+
         }
     }
 }
