@@ -274,6 +274,8 @@ namespace ProjetJeuPOO.Bingo
                 case "1":
                     BingoMenu();
                     break;
+                case "2":
+                    break;
 
             }
             BingoMenu();
@@ -297,27 +299,33 @@ namespace ProjetJeuPOO.Bingo
             Initialisation();
             Visualiser();
             Console.WriteLine();
+            Console.Clear();
             VisualiserCarteAnnonceur();
             BingoMenu();
-            string choice = Console.ReadLine();
-            switch (choice)
+            while(boulier.Count > 0)
             {
-                case "1":
-                    Initialisation();
-                    break;
-                case "2":
-                    Visualiser();
-                    break;
-                case "3":
-                    VisualiserCarteAnnonceur();
-                    break;
-                case "4":
-                    getRanbomBall();
-                    break;
-                case "5":
-                    restartBoulier();
-                    break;
+                string choice = Console.ReadLine();
+                switch (choice)
+                {
+                    case "1":
+                        Initialisation();
+                        break;
+                    case "2":
+                        Visualiser();
+                        break;
+                    case "3":
+                        VisualiserCarteAnnonceur();
+                        break;
+                    case "4":
+                        getRanbomBall();
+                        break;
+                    case "5":
+                        restartBoulier();
+                        break;
+                }
+
             }
+            
         }
         // Fonction qui permet de verifier si un entier ou une boule dans le tableau
         // fonction a utilser dans pour verifier qu'une boole tirée est present dans la carte  du joueur

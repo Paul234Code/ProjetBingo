@@ -8,13 +8,13 @@ namespace ProjetJeuPOO.SimiliBlackJack
     {
         private Joueur player;
         private Croupier dealer;
-        private Deck deck;
+        private Deck deck;      
         // Le constructeur
         public BlackJackController()
         {
             player = new Joueur();
             dealer = new Croupier();
-            deck = new Deck();
+            deck = new Deck();          
         }
         public void DealCard()
         {
@@ -41,8 +41,33 @@ namespace ProjetJeuPOO.SimiliBlackJack
                 DealCard();               
                 player.HandPlayer.ListeOfCard.Clear();
                 dealer.HandDealer.ListeOfCard.Clear();
+                Console.WriteLine("Voulez-vous lancer une nouvelle partie?");
+                Console.WriteLine("Taper[ENTER] pour continuer or CTRL +C pour quitter");
+                Console.ReadLine();
             }
+            LancerNouveauTournoi();
             Console.WriteLine($"Nombres parties: {Joueur.NombreDeParties}");
+        }
+        // Fonction qui permet de lancer un nouveau tournoi
+        public void LancerNouveauTournoi()
+        {
+            Console.WriteLine("Voullez-vous lancer un nouveau Tournoi?");
+            Console.WriteLine("taper [ENTER] pour continuer");
+            Console.WriteLine("1- Lancer nouveau Tournoi");
+            Console.WriteLine("2- Retourner au Menu principal");
+            string choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "1":
+                    Jouer();
+                    break;
+                    
+                case "2":
+                    
+                    break;
+
+            }
+
         }
         // Fonction qui affiche le nombre de point de chaque Joueur
         public void VoirScore()

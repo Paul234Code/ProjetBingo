@@ -2,6 +2,7 @@
 using ProjetJeuPOO.SimiliBlackJack;
 using ProjetJeuPOO.SimiliPendu;
 using System;
+using System.Threading;
 
 namespace ProjetJeuPOO
 {
@@ -22,9 +23,29 @@ namespace ProjetJeuPOO
             };
             pendu = new Pendu(liste);
         }
+        // Fonction qui identifie le nom de la personne
+        public void Identification()
+        {
+            Console.WriteLine("Enter votre nom");
+            string nom = Console.ReadLine();
+        }
         // Fonction qui affiche le Menu principal
         public  void MenuPrincipal()
         {
+            for (int i = 0; i < 100; i++)
+            {
+                Console.Write("-");
+                Thread.Sleep(5);
+            }
+            Console.WriteLine();
+            Console.WriteLine("Bienvenue dans Application");
+            for(int i = 0; i< 100; i++)
+            {
+                Console.Write("-");
+                Thread.Sleep(5);
+            }
+            Console.WriteLine("|");
+            Console.WriteLine();
             Console.WriteLine("1- Jeu de Bingo");
             Console.WriteLine("2- Jeu du SIMILI Black Jack");
             Console.WriteLine("3- Jeu du SIMILI PENDU");
@@ -33,7 +54,7 @@ namespace ProjetJeuPOO
             switch (choice)
             {
                 case "1":
-                    boulier.BingoMenu();
+                    boulier.StartBingoApp();
                     break;
                 case "2":
                     blackJackController.Jouer();
