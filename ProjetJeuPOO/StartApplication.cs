@@ -34,19 +34,19 @@ namespace ProjetJeuPOO
         {
             for (int i = 0; i < 100; i++)
             {
-                Console.Write("-");
+                Console.Write("#");
                 Thread.Sleep(5);
             }
             Console.WriteLine();
-            Console.WriteLine("Bienvenue dans Application");
+            Console.WriteLine("\t\t\t\tBienvenue dans Application");
             for(int i = 0; i< 100; i++)
             {
-                Console.Write("-");
+                Console.Write("#");
                 Thread.Sleep(5);
             }
-            Console.WriteLine("|");
             Console.WriteLine();
-            Console.WriteLine("1- Jeu de Bingo");
+            Console.WriteLine();
+            Console.WriteLine("1- Jeu du Bingo");
             Console.WriteLine("2- Jeu du SIMILI Black Jack");
             Console.WriteLine("3- Jeu du SIMILI PENDU");
             Console.WriteLine("4- Femer Session");

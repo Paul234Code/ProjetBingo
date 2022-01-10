@@ -6,9 +6,12 @@ namespace ProjetJeuPOO.SimiliPendu
 {
     class Pendu : IPendu
     {
-        //static int nbrePartieJouee = 0;
-        //static int nbreVictoires = 0;
-        //static int PointsDeVies = 0;
+        static int NombrePartieJouee = 0;
+        static int NombreVictoires = 0;
+        static int PointsDeVies = 10; 
+        private static int NombreDePointsJoueur = 0;
+        private static int NombreDePointsComputer = 0;
+        Player player;
         private ListeDeMots listeDeMot;
         private Dictionary<char, bool> lettresJouees ;
         public ListeDeMots ListeDeMots
@@ -25,6 +28,7 @@ namespace ProjetJeuPOO.SimiliPendu
         {
             this.listeDeMot = listeDeMot;
             lettresJouees = new Dictionary<char, bool>();
+            player = new Player();
         }
         // Fonction qui transforme un string en string (----------)
         public string TransformRandomWord(string str)
@@ -72,6 +76,7 @@ namespace ProjetJeuPOO.SimiliPendu
             }
             return liste;
         }
+        // Fonction boolenne qui retourne true si le mot contient un tiret
         public bool Verifiy(string str)
         {           
             return str.Contains('-');
@@ -116,15 +121,28 @@ namespace ProjetJeuPOO.SimiliPendu
             Tab[position] = caracter;
             return new string(Tab);
         }
+        // Fonction qui affiche le gagnant du tournoi
         public void AfficherGagnant()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Score du Tournoi:");
+            Console.WriteLine($"Joeur: {NombreDePointsJoueur}");
+            Console.WriteLine($"Ordinateur: {NombreDePointsComputer}");
+            if(NombreDePointsJoueur > NombreDePointsComputer)
+            {
+                Console.WriteLine("Le Joueur est gagnant");
+                ++NombreVictoires; 
+                
+            }
+            else
+            {
+                Console.WriteLine("L'Ordinateur est gagnant");
+            }
         }
         public void JouerAvecMot10(string str1, string str2)
         {
             string tempon = str1;
             var lettresJouees = new Dictionary<char, bool>();
-            while (Verifiy(str2))
+            while (Verifiy(str2) )
             {
                 Console.WriteLine("Enter a letter:");
                 string saisie = Console.ReadLine();
@@ -169,31 +187,93 @@ namespace ProjetJeuPOO.SimiliPendu
                     Console.WriteLine("Veuillez entrer une lettre valide", Console.ForegroundColor = ConsoleColor.Red);
                     Console.ForegroundColor = ConsoleColor.White;
                 }
+               
             }
+        }
+        // Fonction qui permet de jouer au jeu
+        public void startPenduApp()
+        {
+            Console.WriteLine("Bienvenue dans le jeu SIMILI PENDU");
+            Console.WriteLine();
+            Console.WriteLine("Demarrage du jeu en cours.......");
+            Thread.Sleep(3000);
+            
+            {
+               
+                while(PointsDeVies > 0)
+                {
+                    Jouer();
+                    PointsDeVies--;
+
+                }
+
+            }
+
         }
         // Fonction qui demarre le jeu
         public void Jouer()
         {
-            Console.WriteLine("Bienvenue dans le jeu SIMILI PENDU");
-            Console.WriteLine();          
-            Console.WriteLine("Demarrage du jeu en cours.......");
+            Console.WriteLine("Bienvenue dans le jeu du SIMILI PENDU");
+            Console.WriteLine();
+            Console.WriteLine("Demarrage du jeu en cours.......");           
             Thread.Sleep(3000);
-            string randomWord = listeDeMot.getRandomWord();
-            Console.WriteLine(randomWord);
-            if (randomWord.Length <= 10)
+            while (NombreDePointsComputer < 3 && NombreDePointsJoueur < 3)
             {
-                string str1 = TransformRandomWord(randomWord);
-                Console.WriteLine(str1);
-                JouerAvecMot10(randomWord, str1);
+                Console.WriteLine($"Demarrage de la partie {++NombrePartieJouee}");
+                string randomWord = listeDeMot.getRandomWord();              
+                Console.WriteLine(randomWord);
+                if (randomWord.Length <= 10)
+                {
+                    string str1 = TransformRandomWord(randomWord);
+                    Console.WriteLine(str1);
+                    JouerAvecMot10(randomWord, str1);
+                    if (randomWord.Equals(str1))
+                    {
+                        NombreDePointsJoueur++;
+                        Console.WriteLine(NombreDePointsJoueur);
+                    }
+                    else
+                    {
+                        NombreDePointsComputer++;
+                    }
+                }
+                else
+                {
+                    string str2 = TransformRandomWord(randomWord);
+                    Console.WriteLine(str2);
+                    AvoirUnIndice(randomWord);
+                    JouerAvecMot10(randomWord, str2);
+                    if (randomWord.Equals(str2))
+                    {
+                        NombreDePointsJoueur++;
+                        Console.WriteLine(NombreDePointsJoueur);
+                    }
+                    else
+                    {
+                        NombreDePointsComputer++;
+                    }
+                }
+                Console.WriteLine("Voulez-vous jouer une nouvelle partie?");
+                Console.WriteLine("Taper [ENTER] pour continuer or CTRL+C pour quitter");
+                Console.ReadLine();
+                Console.Clear();              
             }
-            else
+            AfficherGagnant();
+            Console.WriteLine("Voulez-vous lancer un nouveau tournoi ou quitter");
+            Console.WriteLine("1- Lancer nouveau Tournoi");
+            Console.WriteLine("2- Retourner au Menu principal");
+            string choice = Console.ReadLine();
+            switch (choice)
             {
-                string str2 = TransformRandomWord(randomWord);
-                Console.WriteLine(str2);
-                AvoirUnIndice(randomWord);
-                JouerAvecMot10(randomWord, str2);
+                case "1":
+                    Jouer();
+                    break;
+
+                case "2":
+
+                    break;
+
             }
-            Console.Clear();
         }
         // Possibilité d'avoir un indice pour un mot de plus de 10 caracteres
         public void AvoirUnIndice(string str)
@@ -209,8 +289,9 @@ namespace ProjetJeuPOO.SimiliPendu
                 Console.WriteLine("Le mot contient les lettres suivants");
                 foreach (var item in liste)
                 {                   
-                    Console.WriteLine($"{str.ToCharArray()[item]}");
+                    Console.Write($" {str.ToCharArray()[item]} ");
                 }
+                Console.WriteLine();
             }
             else
             {
@@ -233,7 +314,7 @@ namespace ProjetJeuPOO.SimiliPendu
             }
             return liste;
         }
-        // Fonction qui permet de jouer une nouvelle partie
+        // Fonction qui permet de jouer une nouveau Tournoi
         public void NouvellePartie()
         {
             Jouer();

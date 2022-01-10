@@ -42,7 +42,7 @@ namespace ProjetJeuPOO.SimiliBlackJack
                 player.HandPlayer.ListeOfCard.Clear();
                 dealer.HandDealer.ListeOfCard.Clear();
                 Console.WriteLine("Voulez-vous lancer une nouvelle partie?");
-                Console.WriteLine("Taper[ENTER] pour continuer or CTRL +C pour quitter");
+                Console.WriteLine("Taper[ENTER] pour continuer or CTRL+C pour quitter");
                 Console.ReadLine();
             }
             LancerNouveauTournoi();
