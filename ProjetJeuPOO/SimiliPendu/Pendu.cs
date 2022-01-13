@@ -319,5 +319,22 @@ namespace ProjetJeuPOO.SimiliPendu
         {
             Jouer();
         }
+        // Le menu de pendu
+        public void PenduMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("1- Demarrer le Jeu");
+            Console.WriteLine("2- Quitter le Jeu");
+            string choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "1":
+                    Jouer();
+                    break;
+                case "2":
+                    Environment.Exit(0);
+                    break;
+            }
+        }
     }
 }

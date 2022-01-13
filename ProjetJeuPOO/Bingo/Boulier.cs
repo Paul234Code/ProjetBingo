@@ -11,10 +11,14 @@ namespace ProjetJeuPOO.Bingo
         private Player player;
         private BingoBall[,] Annonceur;
         private List<BingoBall> boulier;
+        public List<BingoBall> MyListe {
+            get =>boulier; set => boulier = value; }
+        private App app;
         // Le constructeur de la classe
         public Boulier()
         {
             player = new Player();
+            app = new App();
             Annonceur = new BingoBall[15, 5];
             InitializeBoulier();
         }
@@ -55,8 +59,10 @@ namespace ProjetJeuPOO.Bingo
             }
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Initialisation terminé avec success......ok");
+            Console.ForegroundColor = ConsoleColor.White;
             Thread.Sleep(2000);
-            //Console.Clear();
+            Console.Clear();
+            BingoMenu();
         }
         // Fonction qui permet de construire une carte du joueur
         public BingoCard CreerCarteJoueur()
@@ -133,6 +139,9 @@ namespace ProjetJeuPOO.Bingo
             {
                 Console.WriteLine("Entrer un numero de carte valide");
             }
+            Console.ReadLine();
+            Console.Clear();
+            BingoMenu();
         }
         // Fonction qui permet de visualiser la carte de l'annonceur
         public void VisualiserCarteAnnonceur()
@@ -161,7 +170,9 @@ namespace ProjetJeuPOO.Bingo
             Console.WriteLine("-----------------------------------------");
             Console.WriteLine();
             Thread.Sleep(5000);
-           // Console.Clear();
+            Console.ReadLine();
+           Console.Clear();
+           BingoMenu();
         }
         // fonction qui construit la colonne du milieu N
         public List<BingoBall> ConstruireMilieu(int minimum, int maximum)
@@ -265,7 +276,7 @@ namespace ProjetJeuPOO.Bingo
         public void restartBoulier()
         {
             Console.Clear();
-            Console.WriteLine("retourner au menu pour choisir un autre jeu ou de démarrer une nouvelle partie?");
+            Console.WriteLine("Retourner au menu ou démarrer une nouvelle partie?");
             Console.WriteLine("1- Demarrer une nouvelle partie");
             Console.WriteLine("2- Retourner au menu principal");
             string choice = Console.ReadLine();
@@ -275,11 +286,10 @@ namespace ProjetJeuPOO.Bingo
                     BingoMenu();
                     break;
                 case "2":
+                    Console.Clear();
+                    app.Menu();
                     break;
-
             }
-            BingoMenu();
-            Console.Clear();
         }
         // Menu principal du jeu Bingo 
         public void BingoMenu()
@@ -293,15 +303,11 @@ namespace ProjetJeuPOO.Bingo
             Console.WriteLine("4 - Tirez une boule");
             Console.WriteLine("5 - Fin de partie");
             Console.WriteLine();
+            //string choice = Console.ReadLine();
         }
         public void StartBingoApp()
         {
-            Initialisation();
-            Visualiser();
-            Console.WriteLine();
-            Console.Clear();
-            VisualiserCarteAnnonceur();
-            BingoMenu();
+            BingoMenu();         
             while(boulier.Count > 0)
             {
                 string choice = Console.ReadLine();
@@ -323,9 +329,7 @@ namespace ProjetJeuPOO.Bingo
                         restartBoulier();
                         break;
                 }
-
-            }
-            
+            }           
         }
         // Fonction qui permet de verifier si un entier ou une boule dans le tableau
         // fonction a utilser dans pour verifier qu'une boole tirée est present dans la carte  du joueur
