@@ -16,13 +16,13 @@ namespace ProjetJeuPOO
         // Le constructeur
         public StartApplication()
         {
-            //boulier = new Boulier();
+            boulier = new Boulier();
             blackJackController = new BlackJackController();
             liste = new ListeDeMots()
             {
                 ListeDeMot = new List<string>() {"Orange", "Mangue","Bonjour", "developpement", "Recommandation", "Banana","Recommandation", "Poire", "Deroulement", "Pomme", "Limon", "Cerise", "Ordinateur" }
             };
-            pendu = new Pendu(/*liste*/);
+            pendu = new Pendu(liste);
         }
         // Fonction qui identifie le nom de l'Utilisateur
         public string Identification()

@@ -24,10 +24,9 @@ namespace ProjetJeuPOO.SimiliPendu
           set => lettresJouees = value;
         }
         // Le constructeur de la classe Pendu
-        public Pendu(/*ListeDeMots listeDeMot*/)
+        public Pendu(ListeDeMots listeDeMot)
         {
-            //this.listeDeMot = listeDeMot;
-            listeDeMot =  new ListeDeMots();
+            this.listeDeMot = listeDeMot;
             lettresJouees = new Dictionary<char, bool>();
             player = new Player();
         }
@@ -221,7 +220,7 @@ namespace ProjetJeuPOO.SimiliPendu
             while (NombreDePointsComputer < 3 && NombreDePointsJoueur < 3)
             {
                 Console.WriteLine($"Demarrage de la partie {++NombrePartieJouee}");
-                string randomWord = listeDeMot.getRandomWord();              
+                string randomWord = listeDeMot.GetRandomWord();              
                 Console.WriteLine(randomWord);
                 if (randomWord.Length <= 10)
                 {
