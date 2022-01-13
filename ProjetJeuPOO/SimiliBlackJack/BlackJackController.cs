@@ -10,12 +10,14 @@ namespace ProjetJeuPOO.SimiliBlackJack
         private Croupier dealer;
         private Deck deck;
         //Les proprietes
-        public Joueur Joueur {
-            get =>player; 
-            set =>player = value;
+        public Joueur Joueur
+        {
+            get => player;
+            set => player = value;
         }
-        public Croupier Dealer {
-            get => dealer; 
+        public Croupier Dealer
+        {
+            get => dealer;
             set => dealer = value;
         }
         // Le constructeur
@@ -23,16 +25,16 @@ namespace ProjetJeuPOO.SimiliBlackJack
         {
             player = new Joueur();
             dealer = new Croupier();
-            deck = new Deck();          
+            deck = new Deck();
         }
         public void DealCard()
         {
             Console.WriteLine($"Demarrage de la partie {++Joueur.NombreDeParties} en cours.......");
-            Thread.Sleep(3000);
+           // Thread.Sleep(3000);
             player.HandPlayer.AddCard(deck.GetRandomCard());
             dealer.HandDealer.AddCard(deck.GetRandomCard());
             player.HandPlayer.AddCard(deck.GetRandomCard());
-            dealer.HandDealer.AddCard(deck.GetRandomCard());            
+            dealer.HandDealer.AddCard(deck.GetRandomCard());
             Display();
             HitHand();
             Validation();
@@ -44,10 +46,10 @@ namespace ProjetJeuPOO.SimiliBlackJack
         {
             Console.WriteLine("Bienvenue dans le Jeu Blacjack");
             Console.WriteLine("Demarrage du tournoi.......");
-            Thread.Sleep(3000);
+            //Thread.Sleep(3000);
             while (Joueur.NombreDePoints < 4 && Croupier.NombrePoints < 4)
             {
-                DealCard();               
+                DealCard();
                 player.HandPlayer.ListeOfCard.Clear();
                 dealer.HandDealer.ListeOfCard.Clear();
                 Console.WriteLine("Voulez-vous lancer une nouvelle partie?");
@@ -70,9 +72,9 @@ namespace ProjetJeuPOO.SimiliBlackJack
                 case "1":
                     Jouer();
                     break;
-                    
+
                 case "2":
-                    
+
                     break;
 
             }
@@ -102,30 +104,31 @@ namespace ProjetJeuPOO.SimiliBlackJack
                     else
                     {
 
-                    }                  
+                    }
                     Display();
                 }
                 else if (choice.Equals("2"))
                 {
-                    if(dealer.HandDealer.StandHand() < 21)
+                    if (dealer.HandDealer.StandHand() < 21)
                     {
                         dealer.HandDealer.AddCard(deck.GetRandomCard());
-                        Display();
+                        
                     }
                     else
                     {
 
-                    }                   
-                    stop = true;                   
+                    }
+                    Display();
+                    stop = true;
                 }
-            }           
+            }
         }
         // Fonction qui affiche le pointage du Joueur et du Croupier
-         public void Display()
-         {
+        public void Display()
+        {
             player.HandPlayer.DisplayPointage("Joueur");
             dealer.HandDealer.DisplayPointage("Croupier");
-         }
+        }
         // Fonction qui attribut le  point au joeur ou croupier qui a gagné la partie
         public void Validation()
         {
@@ -156,7 +159,7 @@ namespace ProjetJeuPOO.SimiliBlackJack
             else if (dealer.HandDealer.StandHand() == player.HandPlayer.StandHand())
             {
                 Console.WriteLine("Egalité aucune ne gagne la partie");
-            }            
+            }
         }
     }
 }

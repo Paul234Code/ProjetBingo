@@ -11,16 +11,16 @@ namespace ProjetJeuPOO.Bingo
         private Player player;
         private BingoBall[,] Annonceur;
         private List<BingoBall> boulier;
-        public List<BingoBall> MyListe {
-            get =>boulier; set => boulier = value; }
-        private App app;
+        public List<BingoBall> MyListe
+        {
+            get => boulier; set => boulier = value;
+        }
         public static int NombrePartiesJouees { get; set; } = 0;
         public static int NombreVictoires { get; set; } = 0;
         // Le constructeur de la classe
         public Boulier()
         {
             player = new Player();
-            app = new App();
             Annonceur = new BingoBall[15, 5];
             InitializeBoulier();
         }
@@ -173,8 +173,8 @@ namespace ProjetJeuPOO.Bingo
             Console.WriteLine();
             Thread.Sleep(5000);
             Console.ReadLine();
-           Console.Clear();
-           BingoMenu();
+            Console.Clear();
+            BingoMenu();
         }
         // fonction qui construit la colonne du milieu N
         public List<BingoBall> ConstruireMilieu(int minimum, int maximum)
@@ -288,8 +288,7 @@ namespace ProjetJeuPOO.Bingo
                     BingoMenu();
                     break;
                 case "2":
-                    Console.Clear();
-                    app.Menu();
+                    Console.Clear();                 
                     break;
             }
         }
@@ -309,8 +308,8 @@ namespace ProjetJeuPOO.Bingo
         }
         public void StartBingoApp()
         {
-            BingoMenu();         
-            while(boulier.Count > 0)
+            BingoMenu();
+            while (boulier.Count > 0)
             {
                 string choice = Console.ReadLine();
                 switch (choice)
@@ -331,7 +330,7 @@ namespace ProjetJeuPOO.Bingo
                         restartBoulier();
                         break;
                 }
-            }           
+            }
         }
         // Fonction qui permet de verifier si un entier ou une boule dans le tableau
         // fonction a utilser dans pour verifier qu'une boole tirée est present dans la carte  du joueur

@@ -15,11 +15,19 @@ namespace ProjetJeuPOO.SimiliPendu
         }
         // Le constructeur
         public ListeDeMots()
-        {
-            listeDeMot =  new List<string>();
-                   
+        {           
+            InitializeListMot();           
         }
-       
+        // Fonction qui initialise la liste avec les mots du fichier
+        public void InitializeListMot()
+        {           
+            string filePath = "C:/Users/14182/Source/Repos/ProjetBingo/ProjetJeuPOO/SimiliPendu/TextFile1.txt";
+            string[] TableauString = File.ReadAllLines(filePath);           
+            foreach (var item in TableauString)
+            {
+                listeDeMot.Add(item);
+            }
+        }
         // Fonction qui permet de retourner un mot au hasard
         public string GetRandomWord()
         {

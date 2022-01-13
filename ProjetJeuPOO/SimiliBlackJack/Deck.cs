@@ -15,12 +15,13 @@ namespace ProjetJeuPOO.SimiliBlackJack
         // Le constructeur
         public Deck()
         {
-            
-            InitializeDeck();
-        }
-        public void InitializeDeck()
-        {
             stackOfCards = new List<Card>();
+
+            Initialize();
+        }
+        public void Initialize()
+        {
+           
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 13; j++)
@@ -38,24 +39,24 @@ namespace ProjetJeuPOO.SimiliBlackJack
         // Fonction qui permet de tirer une carte au hasard
         public Card GetRandomCard()
         {
-            
-            Card card = stackOfCards[stackOfCards.Count -1];
-            stackOfCards.RemoveAt(stackOfCards.Count -1);
+
+            Card card = stackOfCards[stackOfCards.Count - 1];
+            stackOfCards.RemoveAt(stackOfCards.Count - 1);
             return card;
         }
         // Fonction qui permet de melanger  les cartes
         public void ShuffleDeckCards()
         {
-            
-            Random rng = new Random();
+            Random random = new Random();
             int n = stackOfCards.Count;
-            while (n > 1)
+            while (n > 0)
             {
-                n--;
-                int k = rng.Next(n + 1);
+               
+                int k = random.Next(0,n);
                 Card card = stackOfCards[k];
-                stackOfCards[k] = stackOfCards[n];
-                stackOfCards[n] = card;
+                stackOfCards[k] = stackOfCards[n-1];
+                stackOfCards[n-1] = card;
+                n--;
             }
             stackOfCards.Reverse();
 

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ProjetJeuPOO
+﻿namespace ProjetJeuPOO
 {
-    public  class Player
+    public class Player
     {
         public static string Name { get; set; }
         public static int NombrePartiesJouees { get; set; } = 0;

@@ -8,25 +8,26 @@ namespace ProjetJeuPOO.SimiliPendu
     {
         static int NombrePartieJouee = 0;
         static int NombreVictoires = 0;
-        static int PointsDeVies = 10; 
+        static int PointsDeVies = 10;
         private static int NombreDePointsJoueur = 0;
         private static int NombreDePointsComputer = 0;
         Player player;
         private ListeDeMots listeDeMot;
-        private Dictionary<char, bool> lettresJouees ;
+        private Dictionary<char, bool> lettresJouees;
         public ListeDeMots ListeDeMots
         {
             get => listeDeMot;
             set => listeDeMot = value;
         }
-        public Dictionary<char,bool> LettresJouees {
-          get => lettresJouees;
-          set => lettresJouees = value;
+        public Dictionary<char, bool> LettresJouees
+        {
+            get => lettresJouees;
+            set => lettresJouees = value;
         }
         // Le constructeur de la classe Pendu
-        public Pendu(ListeDeMots listeDeMot)
+        public Pendu()
         {
-            this.listeDeMot = listeDeMot;
+            listeDeMot = new ListeDeMots();
             lettresJouees = new Dictionary<char, bool>();
             player = new Player();
         }
@@ -78,7 +79,7 @@ namespace ProjetJeuPOO.SimiliPendu
         }
         // Fonction boolenne qui retourne true si le mot contient un tiret
         public bool Verifiy(string str)
-        {           
+        {
             return str.Contains('-');
         }
         // Fonction qui permet de retourner la liste des indices d'un caractere dans un tableau
@@ -88,7 +89,7 @@ namespace ProjetJeuPOO.SimiliPendu
             List<int> listeIndice = new List<int>();
             while (i < Tabchar.Length)
             {
-                if(Tabchar[i] == caracter)
+                if (Tabchar[i] == caracter)
                 {
                     listeIndice.Add(i);
                 }
@@ -127,11 +128,11 @@ namespace ProjetJeuPOO.SimiliPendu
             Console.WriteLine("Score du Tournoi:");
             Console.WriteLine($"Joeur: {NombreDePointsJoueur}");
             Console.WriteLine($"Ordinateur: {NombreDePointsComputer}");
-            if(NombreDePointsJoueur > NombreDePointsComputer)
+            if (NombreDePointsJoueur > NombreDePointsComputer)
             {
                 Console.WriteLine("Le Joueur est gagnant");
-                ++NombreVictoires; 
-                
+                ++NombreVictoires;
+
             }
             else
             {
@@ -142,11 +143,11 @@ namespace ProjetJeuPOO.SimiliPendu
         {
             string tempon = str1;
             var lettresJouees = new Dictionary<char, bool>();
-            while (Verifiy(str2) )
+            while (Verifiy(str2))
             {
                 Console.WriteLine("Enter a letter:");
                 string saisie = Console.ReadLine();
-                bool conversion = char.TryParse(saisie, out char chars);             
+                bool conversion = char.TryParse(saisie, out char chars);
                 if (conversion && char.IsLetter(chars))
                 {
                     if (tempon.Contains(chars)) //&& 
@@ -164,7 +165,7 @@ namespace ProjetJeuPOO.SimiliPendu
                             Console.ForegroundColor = ConsoleColor.White;
                             while (longueur > 0)
                             {
-                                int index = indices[0];                            
+                                int index = indices[0];
                                 string chaine = InsererChar(str2, chars, index);
                                 //tempon = InserCharAtPosition(tempon, '=', index);
                                 str2 = chaine;
@@ -180,14 +181,14 @@ namespace ProjetJeuPOO.SimiliPendu
                     {
                         Console.WriteLine($"Le mot ne contient pas la lettre {chars}", Console.ForegroundColor = ConsoleColor.Red);
                         Console.ForegroundColor = ConsoleColor.White;
-                    }                       
-                }               
+                    }
+                }
                 else
                 {
                     Console.WriteLine("Veuillez entrer une lettre valide", Console.ForegroundColor = ConsoleColor.Red);
                     Console.ForegroundColor = ConsoleColor.White;
                 }
-               
+
             }
         }
         // Fonction qui permet de jouer au jeu
@@ -197,10 +198,10 @@ namespace ProjetJeuPOO.SimiliPendu
             Console.WriteLine();
             Console.WriteLine("Demarrage du jeu en cours.......");
             Thread.Sleep(3000);
-            
+
             {
-               
-                while(PointsDeVies > 0)
+
+                while (PointsDeVies > 0)
                 {
                     Jouer();
                     PointsDeVies--;
@@ -215,12 +216,12 @@ namespace ProjetJeuPOO.SimiliPendu
         {
             Console.WriteLine("Bienvenue dans le jeu du SIMILI PENDU");
             Console.WriteLine();
-            Console.WriteLine("Demarrage du jeu en cours.......");           
+            Console.WriteLine("Demarrage du jeu en cours.......");
             Thread.Sleep(3000);
             while (NombreDePointsComputer < 3 && NombreDePointsJoueur < 3)
             {
                 Console.WriteLine($"Demarrage de la partie {++NombrePartieJouee}");
-                string randomWord = listeDeMot.GetRandomWord();              
+                string randomWord = listeDeMot.GetRandomWord();
                 Console.WriteLine(randomWord);
                 if (randomWord.Length <= 10)
                 {
@@ -256,7 +257,7 @@ namespace ProjetJeuPOO.SimiliPendu
                 Console.WriteLine("Voulez-vous jouer une nouvelle partie?");
                 Console.WriteLine("Taper [ENTER] pour continuer or CTRL+C pour quitter");
                 Console.ReadLine();
-                Console.Clear();              
+                Console.Clear();
             }
             AfficherGagnant();
             Console.WriteLine("Voulez-vous lancer un nouveau tournoi ou quitter");
@@ -278,7 +279,7 @@ namespace ProjetJeuPOO.SimiliPendu
         // Possibilité d'avoir un indice pour un mot de plus de 10 caracteres
         public void AvoirUnIndice(string str)
         {
-            Console.WriteLine("Le mot a devinner contient plus de 10 lettres"); 
+            Console.WriteLine("Le mot a devinner contient plus de 10 lettres");
             Console.WriteLine("Mais avez droit a un indice et voici comment faire");
             Console.WriteLine("Entrer le nombre de caractere pour indice(max: 6)");
             string str2 = Console.ReadLine();
@@ -288,7 +289,7 @@ namespace ProjetJeuPOO.SimiliPendu
                 var liste = GetListeNumber(str, number);
                 Console.WriteLine("Le mot contient les lettres suivants");
                 foreach (var item in liste)
-                {                   
+                {
                     Console.Write($" {str.ToCharArray()[item]} ");
                 }
                 Console.WriteLine();
@@ -299,7 +300,7 @@ namespace ProjetJeuPOO.SimiliPendu
             }
         }
         // Fonction qui genere un nombre de valeur aleatoirs et retourne une liste
-        public List<int> GetListeNumber(string str,int number)
+        public List<int> GetListeNumber(string str, int number)
         {
             Random random = new Random();
             List<int> liste = new List<int>();
@@ -309,7 +310,7 @@ namespace ProjetJeuPOO.SimiliPendu
                 if (!liste.Contains(valeur))
                 {
                     liste.Add(valeur);
-                }               
+                }
                 number--;
             }
             return liste;

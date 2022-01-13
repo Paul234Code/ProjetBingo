@@ -2,27 +2,22 @@
 using ProjetJeuPOO.SimiliBlackJack;
 using ProjetJeuPOO.SimiliPendu;
 using System;
-using System.Threading;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace ProjetJeuPOO
 {
     public class StartApplication
     {
-        private Boulier boulier =  new Boulier();
-        private  BlackJackController blackJackController;
-        private  Pendu pendu;
-        private  ListeDeMots liste;
+        private Boulier boulier = new Boulier();
+        private BlackJackController blackJackController;
+        private Pendu pendu;
         // Le constructeur
         public StartApplication()
         {
             boulier = new Boulier();
-            blackJackController = new BlackJackController();
-            liste = new ListeDeMots()
-            {
-                ListeDeMot = new List<string>() {"Orange", "Mangue","Bonjour", "developpement", "Recommandation", "Banana","Recommandation", "Poire", "Deroulement", "Pomme", "Limon", "Cerise", "Ordinateur" }
-            };
-            pendu = new Pendu(liste);
+            blackJackController = new BlackJackController();          
+            pendu = new Pendu();
         }
         // Fonction qui identifie le nom de l'Utilisateur
         public string Identification()
@@ -36,16 +31,16 @@ namespace ProjetJeuPOO
         public void Demarrer()
         {
             Console.WriteLine("1- Demarrer un Jeu");
-            Console.WriteLine("2- Quitter l'application");           
+            Console.WriteLine("2- Quitter l'application");
             string choice = Console.ReadLine();
             switch (choice)
             {
                 case "1":
                     RunApp(Identification());
                     break;
-               case "2":
+                case "2":
                     Environment.Exit(0);
-                    break;                   
+                    break;
             }
         }
         // Fonction qui affiche les parties jouees
@@ -59,7 +54,6 @@ namespace ProjetJeuPOO
             Console.WriteLine("+++++++++++++++++ Score du Simili black jack +++++++++++++++");
             Console.WriteLine();
             Console.WriteLine("+++++++++++++++++ Score du Pendu +++++++++++++++++++++++++++");
-
         }
         // Fonction qui affiche un message de Bienvenue
         public void Message(string name)
@@ -68,14 +62,14 @@ namespace ProjetJeuPOO
             for (int i = 0; i < 100; i++)
             {
                 Console.Write("#");
-                Thread.Sleep(5);
+                Thread.Sleep(10);            
             }
             Console.WriteLine();
-            Console.WriteLine($"#####\t\t\t\tBienvenue {name} dans Application \t\t\t############");          
+            Console.WriteLine($"#####\t\t\t\tBienvenue {name} dans Application \t\t\t############");
             for (int i = 0; i < 100; i++)
             {
                 Console.Write("#");
-                Thread.Sleep(5);
+                Thread.Sleep(10);
             }
             Console.WriteLine();
             Console.WriteLine();
@@ -93,10 +87,10 @@ namespace ProjetJeuPOO
             Console.WriteLine("4- Femer Session");
         }
         // Fonction qui affiche le Menu principal de l'application
-        public  void RunApp(string prenom)
+        public void RunApp(string prenom)
         {
-            Message(prenom); 
-            MenuApp();          
+            Message(prenom);
+            MenuApp();
             string choice = Console.ReadLine();
             switch (choice)
             {
@@ -106,10 +100,10 @@ namespace ProjetJeuPOO
                 case "2":
                     blackJackController.Jouer();
                     break;
-                    case"3":
+                case "3":
                     pendu.PenduMenu();
                     break;
-                case"4":
+                case "4":
                     Environment.Exit(0);
                     break;
             }

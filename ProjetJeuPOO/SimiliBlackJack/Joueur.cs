@@ -24,7 +24,7 @@
         {
             get => nombreDePoints;
             set => nombreDePoints = value;
-        } 
+        }
         public static int NombreDeParties
         {
             get => nombreDePartie;
