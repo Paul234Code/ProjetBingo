@@ -15,9 +15,13 @@ namespace ProjetJeuPOO
                 ListeDeMot = new List<string> {"programmation","informatique","civilisation", "Orange", "Mangue", "developpement", "Recommandation", "Banana", "Poire", "Deroulement", "Pomme", "Limon", "Cerise", "Ordinateur" }
             };           
                        
-            StartApplication app =  new StartApplication();          
-            app.Demarrer();
-            
+            StartApplication app =  new StartApplication();
+            //app.Demarrer();
+            ListeDeMots listeDe = new ListeDeMots();
+            foreach (string item in listeDe.ListeDeMot)
+            {
+                Console.WriteLine(item);
+            }
 
 
            

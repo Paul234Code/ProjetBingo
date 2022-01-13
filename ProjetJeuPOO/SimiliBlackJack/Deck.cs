@@ -15,12 +15,12 @@ namespace ProjetJeuPOO.SimiliBlackJack
         // Le constructeur
         public Deck()
         {
-            Initialize();
+            
+            InitializeDeck();
         }
-        public void Initialize()
+        public void InitializeDeck()
         {
             stackOfCards = new List<Card>();
-
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 13; j++)

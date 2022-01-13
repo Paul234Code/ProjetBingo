@@ -20,9 +20,9 @@ namespace ProjetJeuPOO
             blackJackController = new BlackJackController();
             liste = new ListeDeMots()
             {
-                ListeDeMot = new List<string>() {"Orange", "Mangue","Bonjour", "developpement", "Recommandation", "Banana", "Poire", "Deroulement", "Pomme", "Limon", "Cerise", "Ordinateur" }
+                ListeDeMot = new List<string>() {"Orange", "Mangue","Bonjour", "developpement", "Recommandation", "Banana","Recommandation", "Poire", "Deroulement", "Pomme", "Limon", "Cerise", "Ordinateur" }
             };
-            pendu = new Pendu(liste);
+            pendu = new Pendu(/*liste*/);
         }
         // Fonction qui identifie le nom de l'Utilisateur
         public string Identification()
@@ -51,6 +51,14 @@ namespace ProjetJeuPOO
         // Fonction qui affiche les parties jouees
         public void VoireScore()
         {
+            Console.WriteLine("+++++++++++++++++ Score du Bingo +++++++++++++++++++++++++++");
+            Console.WriteLine();
+            Console.WriteLine($"Nombre parties jouees: {Boulier.NombrePartiesJouees}");
+            Console.WriteLine($"Nombre de Victoires :  {Boulier.NombreVictoires}");
+            Console.WriteLine();
+            Console.WriteLine("+++++++++++++++++ Score du Simili black jack +++++++++++++++");
+            Console.WriteLine();
+            Console.WriteLine("+++++++++++++++++ Score du Pendu +++++++++++++++++++++++++++");
 
         }
         // Fonction qui affiche un message de Bienvenue
@@ -63,30 +71,32 @@ namespace ProjetJeuPOO
                 Thread.Sleep(5);
             }
             Console.WriteLine();
-            Console.WriteLine($"#####\t\t\t\tBienvenue {name} dans Application \t\t\t############");
+            Console.WriteLine($"#####\t\t\t\tBienvenue {name} dans Application \t\t\t############");          
             for (int i = 0; i < 100; i++)
             {
                 Console.Write("#");
                 Thread.Sleep(5);
             }
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            VoireScore();
         }
         // Fonction qui affiche le Menu de l'application
         public void MenuApp()
         {
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine("1- Jeu du Bingo");
-            Console.WriteLine("2- Jeu du SIMILI Black Jack");
-            Console.WriteLine("3- Jeu du SIMILI Pendu");
+            Console.WriteLine("1- Bingo");
+            Console.WriteLine("2- SIMILI Black Jack");
+            Console.WriteLine("3- Le Pendu");
             Console.WriteLine("4- Femer Session");
-
         }
         // Fonction qui affiche le Menu principal de l'application
         public  void RunApp(string prenom)
         {
             Message(prenom); 
-            MenuApp();
-           
+            MenuApp();          
             string choice = Console.ReadLine();
             switch (choice)
             {

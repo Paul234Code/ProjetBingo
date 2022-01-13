@@ -24,9 +24,10 @@ namespace ProjetJeuPOO.SimiliPendu
           set => lettresJouees = value;
         }
         // Le constructeur de la classe Pendu
-        public Pendu(ListeDeMots listeDeMot)
+        public Pendu(/*ListeDeMots listeDeMot*/)
         {
-            this.listeDeMot = listeDeMot;
+            //this.listeDeMot = listeDeMot;
+            listeDeMot =  new ListeDeMots();
             lettresJouees = new Dictionary<char, bool>();
             player = new Player();
         }

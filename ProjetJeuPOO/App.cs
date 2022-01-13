@@ -1,6 +1,9 @@
-﻿using System;
+﻿using ProjetJeuPOO.Bingo;
+using ProjetJeuPOO.SimiliBlackJack;
+using ProjetJeuPOO.SimiliPendu;
+using System;
+using System.Threading;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ProjetJeuPOO
 {
@@ -8,7 +11,14 @@ namespace ProjetJeuPOO
     {
 
         
-            
+        private BlackJackController blackJackController = new BlackJackController();
+        private Boulier  boulier = new Boulier();
+        /*ListeDeMots liste = new ListeDeMots()
+        {
+            ListeDeMot = new List<string>() { "Orange", "Mangue", "Bonjour", "developpement", "Recommandation", "Banana", "Poire", "Deroulement", "Pomme", "Limon", "Cerise", "Ordinateur" }
+            }; */
+        private Pendu pendu = new Pendu();
+
         public  void Menu()
         {
             Console.WriteLine("1- Jeu du Bingo");

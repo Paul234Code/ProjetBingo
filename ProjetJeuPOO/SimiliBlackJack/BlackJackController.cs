@@ -8,7 +8,16 @@ namespace ProjetJeuPOO.SimiliBlackJack
     {
         private Joueur player;
         private Croupier dealer;
-        private Deck deck;      
+        private Deck deck;
+        //Les proprietes
+        public Joueur Joueur {
+            get =>player; 
+            set =>player = value;
+        }
+        public Croupier Dealer {
+            get => dealer; 
+            set => dealer = value;
+        }
         // Le constructeur
         public BlackJackController()
         {
@@ -67,7 +76,6 @@ namespace ProjetJeuPOO.SimiliBlackJack
                     break;
 
             }
-
         }
         // Fonction qui affiche le nombre de point de chaque Joueur
         public void VoirScore()

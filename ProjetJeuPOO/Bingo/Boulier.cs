@@ -14,6 +14,8 @@ namespace ProjetJeuPOO.Bingo
         public List<BingoBall> MyListe {
             get =>boulier; set => boulier = value; }
         private App app;
+        public static int NombrePartiesJouees { get; set; } = 0;
+        public static int NombreVictoires { get; set; } = 0;
         // Le constructeur de la classe
         public Boulier()
         {
