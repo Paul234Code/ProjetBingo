@@ -5,6 +5,7 @@ namespace ProjetJeuPOO.Bingo
     public class BingoBall
     {
         private int number;
+        private char letter;
         // Les proprietes
         public int Number
         {
@@ -12,9 +13,10 @@ namespace ProjetJeuPOO.Bingo
             set => number = value;
         }
         // Le constructeur
-        public BingoBall(int number)
+        public BingoBall(int number ,char letter)
         {
             this.number = number;
+            this.letter = letter;
         }
     }
 }

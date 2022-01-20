@@ -6,14 +6,14 @@ using System.Collections.Generic;
 using System.Threading;
 
 namespace ProjetJeuPOO
-{
-    public class StartApplication
+{ /*
+    public class Startup
     {
         private Boulier boulier = new Boulier();
         private BlackJackController blackJackController;
         private Pendu pendu;
         // Le constructeur
-        public StartApplication()
+        public Startup()
         {
             boulier = new Boulier();
             blackJackController = new BlackJackController();          
@@ -110,5 +110,5 @@ namespace ProjetJeuPOO
         }
 
 
-    }
+    } */
 }

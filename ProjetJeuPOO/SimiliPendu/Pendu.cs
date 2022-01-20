@@ -188,7 +188,6 @@ namespace ProjetJeuPOO.SimiliPendu
                     Console.WriteLine("Veuillez entrer une lettre valide", Console.ForegroundColor = ConsoleColor.Red);
                     Console.ForegroundColor = ConsoleColor.White;
                 }
-
             }
         }
         // Fonction qui permet de jouer au jeu
@@ -198,18 +197,13 @@ namespace ProjetJeuPOO.SimiliPendu
             Console.WriteLine();
             Console.WriteLine("Demarrage du jeu en cours.......");
             Thread.Sleep(3000);
-
             {
-
                 while (PointsDeVies > 0)
                 {
                     Jouer();
                     PointsDeVies--;
-
                 }
-
             }
-
         }
         // Fonction qui demarre le jeu
         public void Jouer()
@@ -271,9 +265,7 @@ namespace ProjetJeuPOO.SimiliPendu
                     break;
 
                 case "2":
-
                     break;
-
             }
         }
         // Possibilité d'avoir un indice pour un mot de plus de 10 caracteres

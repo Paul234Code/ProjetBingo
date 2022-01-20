@@ -8,13 +8,11 @@ namespace ProjetJeuPOO
     {
         static void Main()
         {
-            StartApplication app = new StartApplication();
+           // Startup app = new Startup();
             //app.Demarrer();
-            ListeDeMots dem = new ListeDeMots();
-            foreach (string s in dem.ListeDeMot)
-            {
-                Console.WriteLine(s);
-            }
+           App app = new App();
+            app.Demarrer();
+            
         }
     }
 }

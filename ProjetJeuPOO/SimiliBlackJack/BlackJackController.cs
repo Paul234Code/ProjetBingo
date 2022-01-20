@@ -44,7 +44,6 @@ namespace ProjetJeuPOO.SimiliBlackJack
         // Fonction qui permet de jouer le blackjack
         public void Jouer()
         {
-            Console.WriteLine("Bienvenue dans le Jeu Blacjack");
             Console.WriteLine("Demarrage du tournoi.......");
             //Thread.Sleep(3000);
             while (Joueur.NombreDePoints < 4 && Croupier.NombrePoints < 4)

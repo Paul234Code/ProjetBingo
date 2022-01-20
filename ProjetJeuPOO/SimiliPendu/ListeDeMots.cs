@@ -20,7 +20,8 @@ namespace ProjetJeuPOO.SimiliPendu
         }
         // Fonction qui initialise la liste avec les mots du fichier
         public void InitializeListMot()
-        {           
+        { 
+            listeDeMot = new List<string>();
             string filePath = "C:/Users/14182/Source/Repos/ProjetBingo/ProjetJeuPOO/SimiliPendu/TextFile1.txt";
             string[] TableauString = File.ReadAllLines(filePath);           
             foreach (var item in TableauString)

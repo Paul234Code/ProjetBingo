@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace ProjetJeuPOO.Bingo
 {
-    class Boulier : IBingoBoulier
+    public class Boulier : IBingoBoulier
     {
         private Player player;
         private BingoBall[,] Annonceur;
