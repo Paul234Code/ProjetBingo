@@ -28,9 +28,30 @@ namespace ProjetJeuPOO.Bingo
         public void InitializeBoulier()
         {
             boulier = new List<BingoBall>();
-            for (int i = 1; i <= 75; i++)
+            // la colonne B
+            for (int i = 1; i <= 15; i++)
             {
-                boulier.Add(new BingoBall(i));
+                boulier.Add(new BingoBall(i,'B'));
+            }
+            // La colonne I
+            for(int i = 16;i <= 30; i++)
+            {
+                boulier.Add(new BingoBall(i, 'I'));
+            }
+            // La colonne N
+            for (int i = 31; i <= 45; i++)
+            {
+                boulier.Add(new BingoBall(i, 'I'));
+            }
+            // La colonne G
+            for (int i = 46; i <= 60; i++)
+            {
+                boulier.Add(new BingoBall(i, 'I'));
+            }
+            // La colonne O
+            for (int i = 61; i <= 75; i++)
+            {
+                boulier.Add(new BingoBall(i, 'I'));
             }
         }
         // Fonction qui initialise le nombres de cartes du joeur
