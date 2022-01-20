@@ -58,7 +58,7 @@ namespace ProjetJeuPOO
                 Thread.Sleep(10);
             }
             Console.WriteLine();
-            Console.WriteLine($"+++++++++++++++\tBienvenue {name.ToUpper()} dans l'espace Jeu Application\t++++++++++++++++");
+            Console.WriteLine($"+++++++++++++++\tBienvenue {name.ToUpper()} dans l'espace Jeu Application +++++++++++++++++++");
             for (int i = 0; i < 80; i++)
             {
                 Console.Write("+");
