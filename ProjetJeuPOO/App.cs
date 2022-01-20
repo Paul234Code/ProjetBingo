@@ -10,18 +10,15 @@ namespace ProjetJeuPOO
 {
     public class App
     {
+        // Attributs
         private BlackJackController blackJackController =  new BlackJackController();
         private Boulier boulier = new Boulier();
         private Pendu pendu = new Pendu();
-
-
-
         // Les Fonctions de la classe
         public void MenuApp()
         {
-            //Message(Identification());
-            Console.WriteLine();
-            Console.WriteLine();
+            Message(Identification());
+            Console.WriteLine();       
             Console.WriteLine("1- Bingo");
             Console.WriteLine("2- SIMILI Black Jack");
             Console.WriteLine("3- Le Pendu");
@@ -55,43 +52,37 @@ namespace ProjetJeuPOO
         public void Message(string name)
         {
             Console.WriteLine();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 80; i++)
             {
-                Console.Write("#");
+                Console.Write("+");
                 Thread.Sleep(10);
             }
             Console.WriteLine();
-            Console.WriteLine($"#####\t\t\t\tBienvenue {name} dans Application \t\t\t############");
-            for (int i = 0; i < 100; i++)
+            Console.WriteLine($"+++++++++++++++\tBienvenue {name.ToUpper()} dans l'espace Jeu Application\t++++++++++++++++");
+            for (int i = 0; i < 80; i++)
             {
-                Console.Write("#");
+                Console.Write("+");
                 Thread.Sleep(10);
             }
-            Console.WriteLine();
-            Console.WriteLine();
             Console.WriteLine();
            // VoireScore();
         }
         // Fonction qui lance un nouveau Tournoi de BlackJack
         public void LancerNouveauTournoi()
         {
-            Console.WriteLine("Voullez-vous lancer un nouveau Tournoi?");
-            Console.WriteLine("taper [ENTER] pour continuer");
-            Console.WriteLine("1- Lancer nouveau Tournoi");
-            Console.WriteLine("2- Retourner au Menu principal");
+            Console.WriteLine("Voullez-vous lancer un nouveau Tournoi  Retourner au Menu principal [Y/N]?");
             string choice = Console.ReadLine();
-            switch (choice)
+            switch (choice.ToUpper())
             {
-                case "1":
+                case "Y":
                     blackJackController.Jouer();
                     break;
-                case "2":
+                case "N":
                     MenuApp();
                     break;
-
             }
         }
-        // Fonction qui demarre l'application
+        // Fonction qui demarre l'application principal
         public void Demarrer()
         {
             Console.WriteLine("Bienvenue Dans l'Application");
@@ -126,6 +117,7 @@ namespace ProjetJeuPOO
         // Fonction pour le Bingo
         public void BlackJackApp()
         {
+            Console.WriteLine();
             Console.WriteLine("Bienvenue dans le Jeu Blacjack");
             Console.WriteLine("1- Demarrer Le Jeu");
             Console.WriteLine("2- Quitter Le Jeu");
@@ -135,13 +127,18 @@ namespace ProjetJeuPOO
                 case "1":
                     blackJackController.Jouer();
                     break;
+                case"2":
+                    MenuApp();
+                    break;
             }
 
         }
         // Fonction qui demarre pour le jeu du Boulier
         public void BingoApp()
         {
+            Console.WriteLine("==================================================");
             Console.WriteLine("Bienvenue dans le Jeu du Bingo");
+            Console.WriteLine("==================================================");
             Console.WriteLine();
             Console.WriteLine("Choisir l'option suivante : ");
             Console.WriteLine("1 - Initialiser une nouvelle partie");
@@ -150,25 +147,35 @@ namespace ProjetJeuPOO
             Console.WriteLine("4 - Tirez une boule");
             Console.WriteLine("5 - Fin de partie");
             Console.WriteLine();
-            string choice = Console.ReadLine();
-            switch (choice)
+            while(boulier.MyListe.Count > 0)
             {
-                case "1":
-                    boulier.Initialisation();
-                    break;
-                case "2":
-                    boulier.Visualiser();
-                    break;
-                case "3":
-                    boulier.VisualiserCarteAnnonceur();
-                    break;
-                case "4":
-                    boulier.getRanbomBall();
-                    break;
-                case "5":
-                    boulier.restartBoulier();
-                    break;
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        boulier.Initialisation();
+                        break;
+                    case "2":
+                        boulier.Visualiser();
+                        break;
+                    case "3":
+                        boulier.VisualiserCarteAnnonceur();
+                        break;
+                    case "4":
+                        boulier.getRanbomBall();
+                        break;
+                    case "5":
+                        boulier.restartBoulier();
+                        break;
+                }
+
             }
+            
+                
+
+            
+            
         }
         // Fonction pour qui demarre le jeu Pendu
         public void PenduApp()
@@ -187,18 +194,17 @@ namespace ProjetJeuPOO
                     break;                    
             }
         }
-        // Fonction qui lance une nouvelle partie
+        // Fonction qui lance une nouvelle partie du pendu
         public void NouvellePartie()
         {
-            Console.WriteLine("1- Lancer nouveau Tournoi");
-            Console.WriteLine("2- Retourner au Menu principal");
+            Console.WriteLine("1- Voulez-vous Lancer nouveau Tournoi ou Retourner au Menu principal[Y/N]?");
             string choice = Console.ReadLine();
-            switch (choice)
+            switch (choice.ToUpper())
             {
-                case "1":
+                case "Y":
                     pendu.Jouer();
                     break ;
-                case "2":
+                case "N":
                     MenuApp();
                     break;
             }

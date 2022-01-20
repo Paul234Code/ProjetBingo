@@ -69,11 +69,7 @@ namespace ProjetJeuPOO.SimiliPendu
                 if (!liste.Contains(number))
                 {
                     liste.Add(number);
-                }
-                else
-                {
-
-                }
+                }               
             }
             return liste;
         }
@@ -93,10 +89,6 @@ namespace ProjetJeuPOO.SimiliPendu
                 {
                     listeIndice.Add(i);
                 }
-                else
-                {
-                    //continue;
-                }
                 i++;
             }
             return listeIndice;
@@ -108,10 +100,6 @@ namespace ProjetJeuPOO.SimiliPendu
             if (TabChar[position] == '-')
             {
                 TabChar[position] = caracter;
-            }
-            else
-            {
-
             }
             return new string(TabChar);
         }
@@ -132,7 +120,6 @@ namespace ProjetJeuPOO.SimiliPendu
             {
                 Console.WriteLine("Le Joueur est gagnant");
                 ++NombreVictoires;
-
             }
             else
             {
@@ -205,7 +192,7 @@ namespace ProjetJeuPOO.SimiliPendu
                 }
             }
         }
-        // Fonction qui demarre le jeu
+        // Fonction qui demarre le jeu du pendu
         public void Jouer()
         {
             Console.WriteLine("Bienvenue dans le jeu du SIMILI PENDU");

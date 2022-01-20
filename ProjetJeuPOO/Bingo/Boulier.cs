@@ -329,7 +329,7 @@ namespace ProjetJeuPOO.Bingo
         }
         public void StartBingoApp()
         {
-            BingoMenu();
+           // BingoMenu();
             while (boulier.Count > 0)
             {
                 string choice = Console.ReadLine();
